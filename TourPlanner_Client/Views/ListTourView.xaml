@@ -1,0 +1,157 @@
+﻿<UserControl x:Class="TourPlanner_Client.Views.ListTourView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TourPlanner_Client.Views"
+             mc:Ignorable="d" 
+             xmlns:converters="clr-namespace:TourPlanner_Client.Converters"
+             xmlns:viewmodels="clr-namespace:TourPlanner_Client.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:ListTourViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:TimeOnlyConverter x:Key="TimeOnlyConverter" />
+        <Style x:Key="BorderlessButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".256*"/>
+            <ColumnDefinition Width=".60*"/>
+            <ColumnDefinition Width="0.25*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="0.65*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <!-- Tabs -->
+        <TabControl Grid.Column="2" Grid.RowSpan="5">
+            <TabItem Header="Description">
+                <TextBlock Text="{Binding SelectedTour.Description}" />
+            </TabItem>
+            <TabItem Header="TourLogs">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+        <!-- TourList -->
+        <Label Content="Stored tours" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"/>
+        <ListBox Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  Name="myListBox"  HorizontalContentAlignment="Stretch" BorderThickness="0" Background="#FFE5E5E5" ItemsSource="{Binding Tours}" SelectedItem="{Binding SelectedTour}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Margin" Value="0,0,0,5" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Name}" />
+                        <Button Grid.Column="1" Content="⋮" Click="Button_Click" Style="{StaticResource BorderlessButtonStyle}"/>
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Searchbar -->
+        <TextBox Grid.Row="4" Text="Test2" Width="Auto" BorderThickness="0" HorizontalAlignment="Stretch" Background="#F1F1F1" Foreground="#333333" Padding="8" FontSize="12" FontFamily="Segoe UI" VerticalAlignment="Center">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Foreground" Value="#999999" />
+                    <Setter Property="Text" Value="Search in stored tours" />
+                    <Style.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Foreground" Value="#333333" />
+                            <Setter Property="FontStyle" Value="Normal" />
+                            <Setter Property="Text" Value="" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <!-- Image -->
+        <Image Grid.Column="1" Grid.RowSpan="2" Height="Auto" Width="Auto" Source="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/1280px-SMPTE_Color_Bars.svg.png"/>
+
+        <!-- Details -->
+        <ListBox Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" BorderThickness="0" >
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBoxItem IsEnabled="False" FontWeight="Bold">Details:</ListBoxItem>
+            <ListBoxItem IsEnabled="False" FontSize="12">
+                <TextBlock>
+                    <Bold>
+                        <Run FontWeight="Bold">Source: </Run>
+                    </Bold>
+                    <Run Text="{Binding SelectedTour.Source}" />
+                </TextBlock>
+            </ListBoxItem>
+            <ListBoxItem IsEnabled="False" FontSize="12">
+                <TextBlock>
+                        <Bold>
+                            <Run FontWeight="Bold">Destination: </Run>
+                        </Bold>
+                        <Run Text="{Binding SelectedTour.Destination}" />
+                </TextBlock>
+            </ListBoxItem>
+            <ListBoxItem IsEnabled="False" FontSize="12">
+                <TextBlock>
+                        <Bold>
+                            <Run FontWeight="Bold">Type of tour: </Run>
+                        </Bold>
+                        <Run Text="{Binding SelectedTour.Ttype}" />
+                </TextBlock>
+            </ListBoxItem>
+            <ListBoxItem IsEnabled="False" FontSize="12">
+                <TextBlock>
+                        <Bold>
+                            <Run FontWeight="Bold">Distance: </Run>
+                        </Bold>
+                        <Run Text="{Binding SelectedTour.Distance}" />
+                </TextBlock>
+            </ListBoxItem>
+            <ListBoxItem IsEnabled="False" FontSize="12">
+                <TextBlock>
+                        <Bold>
+                            <Run FontWeight="Bold">Estimated Time: </Run>
+                        </Bold>
+                        <Run Text="{Binding SelectedTour.Estimate, Converter={StaticResource TimeOnlyConverter}}" />
+                </TextBlock>
+            </ListBoxItem>
+        </ListBox>
+
+        <Button Grid.Row="3" Content="Add a new Tour" Command="{Binding AddTourCommand}" />
+    </Grid>
+</UserControl>
