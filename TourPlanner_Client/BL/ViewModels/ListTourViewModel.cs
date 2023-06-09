@@ -66,6 +66,8 @@ namespace TourPlanner_Client.ViewModels
             AddTourCommand = new Commands.AddTourCommand(navigationStore);
         }
 
+
+
         private UserControl currentView;
         public UserControl CurrentView
         {

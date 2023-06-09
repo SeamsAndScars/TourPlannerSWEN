@@ -23,7 +23,7 @@ namespace TourPlanner_Client.ViewModels
         // Constructor
         public SearchViewModel()
         {
-            SearchCommand = new RelayCommand(Search);
+            //SearchCommand = new RelayCommand(Search);
         }
 
         private void Search(object parameter)

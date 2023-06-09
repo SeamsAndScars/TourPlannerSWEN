@@ -74,10 +74,7 @@ namespace TourPlanner_Client.ViewModels
                 OnPropertyChanged(nameof(Destination));
             }
         }
-        //public _TransportType Ttype { get; set; }
-        //public float Distance { get; set; }
-        //public DateTime Estimate { get; set; }
-        //public object Image { get; set; }
+       
 
         private ObservableCollection<Tour> tours;
         public ObservableCollection<Tour> Tours
@@ -103,9 +100,20 @@ namespace TourPlanner_Client.ViewModels
 
         // Other properties for capturing the new tour details
 
+
+        
         public ICommand SubmitTourCommand => new SubmitTourCommand(this);
         public ICommand AddTourCommand { get; }
 
+        public Commands.CancelTourCommand CancelTourCommand{ get; }
+
+        public AddTourViewModel(NavigationStore navigationStore)
+        {
+            CancelTourCommand = new Commands.CancelTourCommand(navigationStore);
+        }
+
+
+        //Displays the different Values of the TransportType enumerable
         private _TransportType _selectedTransportType;
         public _TransportType SelectedTransportType
         {
