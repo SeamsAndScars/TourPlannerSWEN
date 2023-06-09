@@ -106,36 +106,18 @@ namespace TourPlanner_Client.ViewModels
         public ICommand SubmitTourCommand => new SubmitTourCommand(this);
         public ICommand AddTourCommand { get; }
 
-        /*
-        public AddTourViewModel(ObservableCollection<Tour> existingTours)
+        private _TransportType _selectedTransportType;
+        public _TransportType SelectedTransportType
         {
-            Tours = existingTours;
-
-            // Other initialization code...
-
-            AddTourCommand = new AddTourCommand(AddTour);
+            get { return _selectedTransportType; }
+            set
+            {
+                _selectedTransportType = value;
+                OnPropertyChanged(nameof(SelectedTransportType));
+            }
         }
 
-        public AddTourViewModel()
-        {
-            AddTourCommand = new AddTourCommand();
-        }
-
-            private void AddTour()
-        {
-            // Logic to add a new tour to the collection
-            Tours.Add(new Tour("NewTour", "NewDescription", "NeuerOrt", "NeuesZiel", 3));
-
-            //// Clear the input fields or reset the properties
-            //NewTourName = string.Empty;
-            //NewTourDescription = string.Empty;
-            //NewTourSource = string.Empty;
-            //NewTourDestination = string.Empty;
-            //NewTourType = 0;
-        }
-        */
-
-        // Rest of the class implementation
+        public IEnumerable<_TransportType> TransportTypes => Enum.GetValues(typeof(_TransportType)).Cast<_TransportType>();
     }
 
 }
