@@ -1,8 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "StvhtUunWxrDDCPv0qy5ggAWQzUaAaFFu2OrGihUlqNxUM6+zNAoSMW3PotGS+35HvUAoKYOYO5TfH0LbCJoqQ==",
+  "dgSpecHash": "xGUS8yhCDePL0pzVhpceWyiRaqyQq/+WGE6twV61OJlZ76+ubU//z27Er8ebKvCg/uA6zJZynCvS9pgS8kbE+g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\assch\\OneDrive\\Dokumente\\GitHub\\TourPlannerSWEN\\TourPlanner_Client\\TourPlanner_Client.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Jakob\\OneDrive\\Documents\\GitHub\\TourPlannerSWEN\\TourPlanner_Client\\TourPlanner_Client.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Jakob\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
+    "C:\\Users\\Jakob\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.5\\microsoft.entityframeworkcore.abstractions.7.0.5.nupkg.sha512",
+    "C:\\Users\\Jakob\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.5\\microsoft.entityframeworkcore.analyzers.7.0.5.nupkg.sha512",
+    "C:\\Users\\Jakob\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Jakob\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\Jakob\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\Jakob\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Jakob\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
+    "C:\\Users\\Jakob\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Jakob\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
+    "C:\\Users\\Jakob\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\Jakob\\.nuget\\packages\\npgsql\\7.0.4\\npgsql.7.0.4.nupkg.sha512",
+    "C:\\Users\\Jakob\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

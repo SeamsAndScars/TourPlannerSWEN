@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\obj\Debug\net6.0-windows\
+C:\Users\Jakob\OneDrive\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\obj\Debug\net6.0-windows\
 TourPlanner_Client
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\App.xaml
+C:\Users\Jakob\OneDrive\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\App.xaml
 31469568197
 
 241197934390
-1941709816142
+205-1618162532
 MainWindow.xaml;Views\AddTourView.xaml;Views\ListTourView.xaml;
 
-False
+True
 

@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\TourPlanner_Client",
+    "\\TourPlanner_Client\\BL",
+    "\\TourPlanner_Client\\BL\\ViewModels",
     "\\TourPlanner_Client\\Commands"
   ],
-  "SelectedNode": "\\TourPlanner_Client.sln",
+  "SelectedNode": "\\TourPlanner_Client\\BL\\ViewModels\\AddTourViewModel.cs",
   "PreviewInSolutionExplorer": false
 }
