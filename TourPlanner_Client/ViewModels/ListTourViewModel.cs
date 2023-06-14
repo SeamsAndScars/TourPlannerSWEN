@@ -59,9 +59,9 @@ namespace TourPlanner_Client.ViewModels
             Tours = new ObservableCollection<Tour>();
 
             // Populate the Tours collection with sample data
-            Tours.Add(new Tour("Tour1", "This is a very great description; 1", "Hier", "Dort", 2));
-            Tours.Add(new Tour("Tour2", "This is a very great description; 2", "Dort", "Hier", 0));
-            Tours.Add(new Tour("Tour3", "This is a very great description; 3", "Wien", "Vienna", 1));
+            Tours.Add(new Tour("Tour1", "This is a very great description; 1", "Hier", "Dort", _TransportType.Bike));
+            Tours.Add(new Tour("Tour2", "This is a very great description; 2", "Dort", "Hier", _TransportType.Hike));
+            Tours.Add(new Tour("Tour3", "This is a very great description; 3", "Wien", "Vienna", _TransportType.Run));
 
             AddTourCommand = new Commands.AddTourCommand(navigationStore);
         }

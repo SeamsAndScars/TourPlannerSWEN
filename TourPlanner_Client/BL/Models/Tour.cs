@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TourPlanner_Client.Models
 {
@@ -17,29 +19,34 @@ namespace TourPlanner_Client.Models
         public _TransportType Ttype { get; set; }
         public float Distance { get; set; }
         public DateTime Estimate { get; set; }
-        public object Image { get; set; }           //Needs to be changed later according to MapQuest image
 
-        public Tour(string Name, string Description, string Source, string Destination, int ttype)
+        [NotMapped]
+        public object Image { get; set; }
+
+        public Tour(string Name, string Description, string Source, string Destination, _TransportType ttype)
         {
             Id = Guid.NewGuid();
             this.Name = Name;
             this.Description = Description;
             this.Source = Source;
             this.Destination = Destination;
-            TourLogs= new List<TourLogs>();
-            Ttype = (_TransportType)ttype;
+            TourLogs = new List<TourLogs>();
+            Ttype = ttype;
             Distance = 756;
-            Estimate = new DateTime(7,5,7);
+            Estimate = new DateTime(7, 5, 7);
             Image = new object();
         }
     }
 
-
     public enum _TransportType
     {
+        [Description("Hike")]
         Hike,
+        [Description("Run")]
         Run,
+        [Description("Bike")]
         Bike,
+        [Description("Vacation")]
         Vacation
     }
 }

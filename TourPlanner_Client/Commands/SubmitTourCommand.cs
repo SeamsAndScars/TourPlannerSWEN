@@ -19,7 +19,9 @@ namespace TourPlanner_Client.Commands
 
         public override void Execute(object parameter)
         {
-            MessageBox.Show(ViewModel.Description);
+            MessageBox.Show("SubmitTourCommand executed!");
+
+
         }
     }
 }

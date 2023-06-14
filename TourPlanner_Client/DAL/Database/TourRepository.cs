@@ -10,8 +10,11 @@ namespace TourPlanner_Client.DAL.Database
     {
         public void Add(Tour tour)
         {
-            //add to db
-            //insert
+            using (var dbContext = new TourPlannerDbContext())
+            {
+                dbContext.Tours.Add(tour);
+                dbContext.SaveChanges();
+            }
         }
     }
 }
