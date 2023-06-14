@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using TourPlanner_Client.BL.Tour;
 using TourPlanner_Client.ViewModels;
 
 namespace TourPlanner_Client.Commands
@@ -17,11 +18,13 @@ namespace TourPlanner_Client.Commands
             this.ViewModel = viewModel;
         }
 
+        //when pressing the submit button, a new tour gets added into the db
         public override void Execute(object parameter)
         {
-            MessageBox.Show("SubmitTourCommand executed!");
+            AddTour addTour = new AddTour();
+            addTour.Add(ViewModel);
 
-
+            MessageBox.Show("Tour added!");
         }
     }
 }

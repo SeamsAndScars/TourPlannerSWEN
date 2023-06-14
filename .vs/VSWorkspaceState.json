@@ -3,9 +3,9 @@
     "",
     "\\TourPlanner_Client",
     "\\TourPlanner_Client\\BL",
-    "\\TourPlanner_Client\\BL\\ViewModels",
+    "\\TourPlanner_Client\\BL\\Tour",
     "\\TourPlanner_Client\\Commands"
   ],
-  "SelectedNode": "\\TourPlanner_Client\\BL\\ViewModels\\AddTourViewModel.cs",
+  "SelectedNode": "\\TourPlanner_Client\\BL\\Tour\\AddTour.cs",
   "PreviewInSolutionExplorer": false
 }

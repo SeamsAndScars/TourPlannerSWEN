@@ -33,7 +33,7 @@ namespace TourPlanner_Client.Models
             TourLogs = new List<TourLogs>();
             Ttype = ttype;
             Distance = 756;
-            Estimate = new DateTime(7, 5, 7);
+            Estimate = new DateTime(7, 5, 7).ToUniversalTime();
             Image = new object();
         }
     }
