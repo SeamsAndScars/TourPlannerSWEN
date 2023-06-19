@@ -1,20 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+using System.Linq;
+using TourPlanner_Client.DAL.Database;
 using TourPlanner_Client.Models;
 
-namespace TourPlanner_Client.DAL.Database
+internal class TourRepository
 {
-    internal class TourRepository
+    private readonly TourPlannerDbContext dbContext;
+
+    public TourRepository()
     {
-        public void Add(Tour tour)
+        dbContext = new TourPlannerDbContext();
+    }
+
+    // Create a new tour
+    public void CreateTour(Tour tour)
+    {
+        dbContext.Tours.Add(tour);
+        dbContext.SaveChanges();
+    }
+
+    // Get a tour
+    public Tour GetTour(Guid tourId)
+    {
+        return dbContext.Tours.Find(tourId);
+    }
+
+    // Get all tours
+    public List<Tour> GetTours()
+    {
+        return dbContext.Tours.ToList();
+    }
+
+    // Update a tour (modify)
+    public void UpdateTour(Tour tour)
+    {
+        dbContext.Tours.Update(tour);
+        dbContext.SaveChanges();
+    }
+
+    // Delete a tour
+    public void DeleteTour(Guid tourId)
+    {
+        var tour = GetTour(tourId);
+        if (tour != null)
         {
-            using (var dbContext = new TourPlannerDbContext())
-            {
-                dbContext.Tours.Add(tour);
-                dbContext.SaveChanges();
-            }
+            dbContext.Tours.Remove(tour);
+            dbContext.SaveChanges();
         }
     }
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using TourPlanner_Client.Stores;
@@ -15,25 +11,27 @@ namespace TourPlanner_Client
     /// </summary>
     public partial class App : Application
     {
-        private readonly NavigationStore _navigationStore;
-
-        public App()
-        {
-            _navigationStore = new NavigationStore();
-        }
-
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViewModel = new ListTourViewModel(_navigationStore);
+            base.OnStartup(e);
 
-            MainWindow = new MainWindow()
+            // Create the NavigationStore
+            var navigationStore = new NavigationStore();
+
+            // Create the MainViewModel and pass the NavigationStore
+            var mainViewModel = new MainViewModel(navigationStore);
+
+            // Set the MainViewModel as the DataContext for the MainWindow
+            var mainWindow = new MainWindow
             {
-                DataContext = new MainViewModel(_navigationStore)
+                DataContext = mainViewModel
             };
 
-            MainWindow.Show();
+            // Set the initial view (ListTourView) in the NavigationStore
+            navigationStore.CurrentViewModel = new ListTourViewModel(navigationStore);
 
-            base.OnStartup(e);
+            // Show the MainWindow
+            mainWindow.Show();
         }
     }
 }

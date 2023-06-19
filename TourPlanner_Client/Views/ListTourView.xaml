@@ -25,8 +25,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    
-
+ 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".256*"/>
@@ -52,11 +51,11 @@
         </TabControl>
 
         <!-- TourList -->
-        <Label Content="Stored tours" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"/>
-        <ListBox Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  Name="myListBox"  HorizontalContentAlignment="Stretch" BorderThickness="0" Background="#FFE5E5E5" ItemsSource="{Binding Tours}" SelectedItem="{Binding SelectedTour}">
+        <ListBox Grid.Column="0" Grid.RowSpan="3" Name="myListBox" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="#FFE5E5E5" ItemsSource="{Binding Tours}" SelectedItem="{Binding SelectedTour}" Margin="0,2,0,0">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Margin" Value="0,0,0,5" />
+                    <EventSetter Event="PreviewMouseDoubleClick" Handler="ListBoxItem_DoubleClick" />
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
@@ -68,12 +67,10 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding Name}" />
                         <Button Grid.Column="1" Content="⋮" Click="Button_Click" Style="{StaticResource BorderlessButtonStyle}"/>
-
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
         <!-- Searchbar -->
         <TextBox Grid.Row="4" Text="Test2" Width="Auto" BorderThickness="0" HorizontalAlignment="Stretch" Background="#F1F1F1" Foreground="#333333" Padding="8" FontSize="12" FontFamily="Segoe UI" VerticalAlignment="Center">
             <TextBox.Style>

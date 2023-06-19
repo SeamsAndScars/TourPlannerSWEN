@@ -18,6 +18,9 @@ namespace TourPlanner_Client.ViewModels
 {
     public class ListTourViewModel : ViewModelBase
     {
+
+
+
         private ObservableCollection<Tour> tours;
         public ObservableCollection<Tour> Tours
         {
@@ -26,6 +29,17 @@ namespace TourPlanner_Client.ViewModels
             {
                 tours = value;
                 OnPropertyChanged(nameof(tours));
+            }
+        }
+
+        private NavigationStore navigationStore;
+        public NavigationStore NavigationStore
+        {
+            get { return navigationStore; }
+            set
+            {
+                navigationStore = value;
+                OnPropertyChanged(nameof(NavigationStore));
             }
         }
 
@@ -52,18 +66,35 @@ namespace TourPlanner_Client.ViewModels
         }
 
         public Commands.AddTourCommand AddTourCommand { get; }
+        public NavigateCommand NavigateCommand { get; }
 
         public ListTourViewModel(NavigationStore navigationStore)
         {
+
+            this.NavigationStore = navigationStore;
+
             //CurrentView = new ListTourView();
             Tours = new ObservableCollection<Tour>();
 
+            // Create an instance of TourRepository
+            TourRepository tourRepository = new TourRepository();
+
+            // Retrieve all tours from the database
+            List<Tour> allTours = tourRepository.GetTours();
+
+            // Populate the Tours collection with the retrieved tours
+            foreach (var tour in allTours)
+            {
+                Tours.Add(tour);
+            }
+
             // Populate the Tours collection with sample data
-            Tours.Add(new Tour("Tour1", "This is a very great description; 1", "Hier", "Dort", _TransportType.Bike));
-            Tours.Add(new Tour("Tour2", "This is a very great description; 2", "Dort", "Hier", _TransportType.Hike));
-            Tours.Add(new Tour("Tour3", "This is a very great description; 3", "Wien", "Vienna", _TransportType.Run));
+            //Tours.Add(new Tour("Tour1", "This is a very great description; 1", "Hier", "Dort", _TransportType.Bike));
+            //Tours.Add(new Tour("Tour2", "This is a very great description; 2", "Dort", "Hier", _TransportType.Hike));
+            //Tours.Add(new Tour("Tour3", "This is a very great description; 3", "Wien", "Vienna", _TransportType.Run));
 
             AddTourCommand = new Commands.AddTourCommand(navigationStore);
+            NavigateCommand = new NavigateCommand(navigationStore);
         }
 
 

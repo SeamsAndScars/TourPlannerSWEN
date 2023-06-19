@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TourPlanner_Client.ViewModels;
 
 namespace TourPlanner_Client.Stores
@@ -18,7 +14,6 @@ namespace TourPlanner_Client.Stores
                 _currentViewModel = value;
                 OnCurrentViewModelChanged();
             }
-             
         }
 
         private void OnCurrentViewModelChanged()
