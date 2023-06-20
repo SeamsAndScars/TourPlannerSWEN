@@ -40,6 +40,7 @@
         //private readonly NavigationStore _navigationStore;
         private void ListBoxItem_DoubleClick(object sender, MouseButtonEventArgs e)
         {
+            
             if (sender is ListBoxItem listBoxItem && listBoxItem.DataContext is Tour selectedTour)
             {
                 navigationStore = ((ListTourViewModel)DataContext).NavigationStore;

@@ -11,6 +11,7 @@ namespace TourPlanner_Client
     /// </summary>
     public partial class App : Application
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -32,6 +33,7 @@ namespace TourPlanner_Client
 
             // Show the MainWindow
             mainWindow.Show();
+            log.Info("TourPlanner client has started!");
         }
     }
 }
