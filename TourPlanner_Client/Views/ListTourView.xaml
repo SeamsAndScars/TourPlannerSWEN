@@ -55,6 +55,7 @@
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Margin" Value="0,0,0,5" />
+                    
                     <EventSetter Event="PreviewMouseDoubleClick" Handler="ListBoxItem_DoubleClick" />
                 </Style>
             </ListBox.ItemContainerStyle>
@@ -66,7 +67,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding Name}" />
-                        <Button Grid.Column="1" Content="⋮" Click="Button_Click" Style="{StaticResource BorderlessButtonStyle}"/>
+                       
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

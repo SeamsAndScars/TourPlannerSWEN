@@ -65,15 +65,14 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        public Commands.AddTourCommand AddTourCommand { get; }
-        public NavigateCommand NavigateCommand { get; }
+        public AddTourCommand AddTourCommand { get; }
+        public EditTourCommand EditTourCommand { get; }
 
         public ListTourViewModel(NavigationStore navigationStore)
         {
 
             this.NavigationStore = navigationStore;
 
-            //CurrentView = new ListTourView();
             Tours = new ObservableCollection<Tour>();
 
             // Create an instance of TourRepository
@@ -88,13 +87,8 @@ namespace TourPlanner_Client.ViewModels
                 Tours.Add(tour);
             }
 
-            // Populate the Tours collection with sample data
-            //Tours.Add(new Tour("Tour1", "This is a very great description; 1", "Hier", "Dort", _TransportType.Bike));
-            //Tours.Add(new Tour("Tour2", "This is a very great description; 2", "Dort", "Hier", _TransportType.Hike));
-            //Tours.Add(new Tour("Tour3", "This is a very great description; 3", "Wien", "Vienna", _TransportType.Run));
-
-            AddTourCommand = new Commands.AddTourCommand(navigationStore);
-            NavigateCommand = new NavigateCommand(navigationStore);
+            AddTourCommand = new AddTourCommand(navigationStore);
+            EditTourCommand = new EditTourCommand(navigationStore);
         }
 
 

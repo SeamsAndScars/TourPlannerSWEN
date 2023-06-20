@@ -23,7 +23,7 @@ namespace TourPlanner_Client.Views
     {
         public AddTourView()
         {
-            //InitializeComponent();
+            InitializeComponent();
             //this.DataContext = new AddTourViewModel(new Stores.NavigationStore());
         }
     }

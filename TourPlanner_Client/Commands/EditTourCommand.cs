@@ -8,6 +8,13 @@ namespace TourPlanner_Client.Commands
     public class EditTourCommand : CommandBase
     {
         private readonly NavigationStore _navigationStore;
+        public EditTourViewModel ViewModel { get; set; }
+
+
+        public EditTourCommand(EditTourViewModel viewModel)
+        {
+            this.ViewModel = viewModel;
+        }
 
         public EditTourCommand(NavigationStore navigationStore)
         {

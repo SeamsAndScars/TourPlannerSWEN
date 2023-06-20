@@ -11,13 +11,13 @@ namespace TourPlanner_Client.Commands
 {
     public class CancelTourCommand:CommandBase
     {
+        public ListTourViewModel ViewModel { get; set; }
+        private readonly NavigationStore _navigationStore;
+
         public CancelTourCommand(ListTourViewModel viewModel)
         {
             this.ViewModel = viewModel;
         }
-
-        public ListTourViewModel ViewModel { get; set; }
-        private readonly NavigationStore _navigationStore;
 
         public CancelTourCommand(NavigationStore navigationStore)
         {

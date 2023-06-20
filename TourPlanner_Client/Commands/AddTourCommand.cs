@@ -29,9 +29,8 @@ namespace TourPlanner_Client.Commands
 
            _navigationStore.CurrentViewModel = new AddTourViewModel(_navigationStore);
             if (ViewModel == null)
-            {
                 return;
-            }
+            
             MessageBox.Show(ViewModel.Description);
          
         }
