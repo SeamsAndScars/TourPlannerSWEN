@@ -1,25 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using TourPlanner_Client.BL;
+using TourPlanner_Client.Models;
 using TourPlanner_Client.ViewModels;
 
 namespace TourPlanner_Client.Commands
 {
     public class SubmitChangeCommand : CommandBase
     {
-        private readonly EditTourViewModel _viewModel;
+        public EditTourViewModel ViewModel { get; set; }
 
         public SubmitChangeCommand(EditTourViewModel viewModel)
         {
-            _viewModel = viewModel;
+            this.ViewModel = viewModel;
         }
 
         public override void Execute(object parameter)
         {
-            // Add logic to save the changes to the tour
+            // Update the tour in the database
+            TourManager tourManager = new TourManager();
+            tourManager.UpdateTour(ViewModel);
 
             MessageBox.Show("Changes submitted!");
         }

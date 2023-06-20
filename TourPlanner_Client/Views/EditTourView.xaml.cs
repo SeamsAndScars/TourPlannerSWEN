@@ -24,7 +24,7 @@ namespace TourPlanner_Client.Views
         public EditTourView()
         {
             InitializeComponent();
-            //DataContext = new EditTourViewModel(navigationStore, selectedTour);
+        
         }
     }
 }

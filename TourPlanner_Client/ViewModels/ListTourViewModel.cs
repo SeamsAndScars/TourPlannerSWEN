@@ -65,12 +65,14 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
+        
+
         public AddTourCommand AddTourCommand { get; }
         public EditTourCommand EditTourCommand { get; }
 
         public ListTourViewModel(NavigationStore navigationStore)
         {
-
+           
             this.NavigationStore = navigationStore;
 
             Tours = new ObservableCollection<Tour>();

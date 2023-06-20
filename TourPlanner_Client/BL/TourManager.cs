@@ -37,6 +37,21 @@ namespace TourPlanner_Client.BL
         }
 
         // Other methods for CRUD operations, e.g., UpdateTour, DeleteTour
-       
+
+        public void UpdateTour(EditTourViewModel tourViewModel)
+        {
+            Tour updatedTour = new Tour(
+                tourViewModel.Name,
+                tourViewModel.Description,
+                tourViewModel.Source,
+                tourViewModel.Destination,
+                tourViewModel.SelectedTransportType
+            );
+
+            // Set the ID of the updated tour to the ID of the existing tour
+            updatedTour.Id = tourViewModel.Id;
+
+            tourRepository.UpdateTour(updatedTour);
+        }
     }
 }
