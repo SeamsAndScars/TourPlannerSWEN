@@ -55,8 +55,8 @@
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Margin" Value="0,0,0,5" />
-                    
                     <EventSetter Event="PreviewMouseDoubleClick" Handler="ListBoxItem_DoubleClick" />
+                    
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
@@ -66,8 +66,7 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding Name}" />
-                       
+                        <TextBlock Grid.Column="0" Text="{Binding Name}"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -151,5 +150,8 @@
         </ListBox>
 
         <Button Grid.Row="3" Content="Add a new Tour" Command="{Binding AddTourCommand}" />
+
+        
     </Grid>
+    
 </UserControl>

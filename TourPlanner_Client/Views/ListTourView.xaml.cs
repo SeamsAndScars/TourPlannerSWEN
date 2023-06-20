@@ -38,7 +38,6 @@
             }
 
         //private readonly NavigationStore _navigationStore;
-
         private void ListBoxItem_DoubleClick(object sender, MouseButtonEventArgs e)
         {
             
@@ -49,7 +48,8 @@
             }
         }
 
-            private void OnCurrentViewModelChanged()
+
+        private void OnCurrentViewModelChanged()
             {
                 ViewModelBase currentViewModel = navigationStore.CurrentViewModel;
 

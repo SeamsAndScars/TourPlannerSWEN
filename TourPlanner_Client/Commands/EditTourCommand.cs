@@ -2,6 +2,7 @@
 using TourPlanner_Client.Models;
 using TourPlanner_Client.Stores;
 using TourPlanner_Client.ViewModels;
+using TourPlanner_Client.Views;
 
 namespace TourPlanner_Client.Commands
 {
@@ -26,6 +27,7 @@ namespace TourPlanner_Client.Commands
             if (parameter is Tour selectedTour)
             {
                 _navigationStore.CurrentViewModel = new EditTourViewModel(_navigationStore, selectedTour);
+                
             }
             else
             {

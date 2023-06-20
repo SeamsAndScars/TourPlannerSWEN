@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Controls;
 using System.Windows.Input;
 using TourPlanner_Client.Commands;
 using TourPlanner_Client.Models;
@@ -10,6 +13,8 @@ namespace TourPlanner_Client.ViewModels
     {
         private Tour tour;
         private readonly NavigationStore _navigationStore;
+
+        public Guid Id { get; set; } // Add Id property
 
         public string Name
         {
@@ -51,27 +56,41 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        public _TransportType TransportType
+        //Displays the different Values of the TransportType enumerable
+        private _TransportType _selectedTransportType;
+        public _TransportType SelectedTransportType
         {
-            get { return tour.Ttype; }
+            get { return _selectedTransportType; }
             set
             {
-                tour.Ttype = value;
-                OnPropertyChanged(nameof(TransportType));
+                _selectedTransportType = value;
+                OnPropertyChanged(nameof(SelectedTransportType));
             }
         }
 
-        public ICommand SubmitChangeCommand { get; }
+        public List<_TransportType> TransportTypes { get; } = Enum.GetValues(typeof(_TransportType)).Cast<_TransportType>().ToList();
+
+        //public ICommand SubmitChangeCommand { get; }
+        public ICommand SubmitChangeCommand => new SubmitChangeCommand(this);
         public ICommand DeleteTourCommand { get; }
+
+        public ICommand EditTourCommand { get; }
+
+        public Commands.CancelTourCommand CancelTourCommand { get; }
 
         public EditTourViewModel(NavigationStore navigationStore, Tour selectedTour)
         {
             _navigationStore = navigationStore;
             tour = selectedTour;
-            SubmitChangeCommand = new SubmitChangeCommand(this);
+            Id = selectedTour.Id;
+            SelectedTransportType = tour.Ttype;
+            //SubmitChangeCommand = new SubmitChangeCommand(this);
             DeleteTourCommand = new DeleteTourCommand(this);
+            CancelTourCommand = new Commands.CancelTourCommand(navigationStore);
         }
 
         // Additional logic for SubmitChangeCommand and DeleteTourCommand
+
+        
     }
 }
