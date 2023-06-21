@@ -12,7 +12,7 @@ using TourPlanner_Client.DAL.Database;
 namespace TourPlanner_Client.Migrations
 {
     [DbContext(typeof(TourPlannerDbContext))]
-    [Migration("20230621115833_InitialCreate")]
+    [Migration("20230621175641_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -42,8 +42,8 @@ namespace TourPlanner_Client.Migrations
                     b.Property<float>("Distance")
                         .HasColumnType("real");
 
-                    b.Property<DateTime>("Estimate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<int>("Estimate")
+                        .HasColumnType("integer");
 
                     b.Property<string>("ImageFileName")
                         .IsRequired()

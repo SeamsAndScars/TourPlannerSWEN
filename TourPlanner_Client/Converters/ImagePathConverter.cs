@@ -18,13 +18,25 @@ namespace TourPlanner_Client.Converters
                 // Construct the full image path
                 string imagePath = Path.Combine(baseDirectory, "Images", fileName);
 
-                // Create a BitmapImage and set its source to the image path
-                BitmapImage image = new BitmapImage();
-                image.BeginInit();
-                image.UriSource = new Uri(imagePath);
-                image.EndInit();
+                // Check if the image file exists
+                if (File.Exists(imagePath))
+                {
+                    // Create a BitmapImage and set its source to the image path
+                    BitmapImage image = new BitmapImage();
+                    image.BeginInit();
+                    image.UriSource = new Uri(imagePath);
+                    image.EndInit();
 
-                return image;
+                    return image;
+                }
+                else
+                {
+                    // Image file not found, return a default image or null
+                    // For example, you can return a placeholder image
+                    // return new BitmapImage(new Uri("path_to_default_image"));
+                    // Or return null
+                    return null;
+                }
             }
 
             return null;

@@ -1,26 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO.Packaging;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using TourPlanner_Client.Commands;
 using TourPlanner_Client.Models;
 using TourPlanner_Client.Stores;
-using TourPlanner_Client.Views;
+using TourPlanner_Client.BL;
 
 namespace TourPlanner_Client.ViewModels
 {
     public class ListTourViewModel : ViewModelBase
     {
-
-
-
         private ObservableCollection<Tour> tours;
         public ObservableCollection<Tour> Tours
         {
@@ -28,7 +16,7 @@ namespace TourPlanner_Client.ViewModels
             set
             {
                 tours = value;
-                OnPropertyChanged(nameof(tours));
+                OnPropertyChanged(nameof(Tours));
             }
         }
 
@@ -50,40 +38,22 @@ namespace TourPlanner_Client.ViewModels
             set
             {
                 selectedTour = value;
-                OnPropertyChanged(nameof(selectedTour));
+                OnPropertyChanged(nameof(SelectedTour));
             }
         }
-
-        private TimeOnly _selectedTourTime;
-        public TimeOnly SelectedTourTime
-        {
-            get { return _selectedTourTime; }
-            set
-            {
-                _selectedTourTime = value;
-                OnPropertyChanged(nameof(SelectedTourTime));
-            }
-        }
-
-        
 
         public AddTourCommand AddTourCommand { get; }
         public EditTourCommand EditTourCommand { get; }
 
         public ListTourViewModel(NavigationStore navigationStore)
         {
-           
             this.NavigationStore = navigationStore;
 
             Tours = new ObservableCollection<Tour>();
 
-            // Create an instance of TourRepository
-            TourRepository tourRepository = new TourRepository();
+            TourManager tourManager = new TourManager();
+            List<Tour> allTours = tourManager.GetTours();
 
-            // Retrieve all tours from the database
-            List<Tour> allTours = tourRepository.GetTours();
-
-            // Populate the Tours collection with the retrieved tours
             foreach (var tour in allTours)
             {
                 Tours.Add(tour);
@@ -93,19 +63,5 @@ namespace TourPlanner_Client.ViewModels
             EditTourCommand = new EditTourCommand(navigationStore);
         }
 
-
-
-        private UserControl currentView;
-        public UserControl CurrentView
-        {
-            get { return currentView; }
-            set
-            {
-                currentView = value;
-                OnPropertyChanged(nameof(CurrentView));
-            }
-        }
-
     }
-
 }

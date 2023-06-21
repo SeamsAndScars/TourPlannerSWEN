@@ -10,7 +10,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:ListTourViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <converters:TimeOnlyConverter x:Key="TimeOnlyConverter" />
+        <converters:SecondsToTimeConverter x:Key="SecondsToTimeConverter" />
         <converters:ImagePathConverter x:Key="ImagePathConverter" />
         <Style x:Key="BorderlessButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent" />
@@ -138,6 +138,7 @@
                             <Run FontWeight="Bold">Distance: </Run>
                         </Bold>
                         <Run Text="{Binding SelectedTour.Distance}" />
+                        <Run Text="km" />
                 </TextBlock>
             </ListBoxItem>
             <ListBoxItem IsEnabled="False" FontSize="12">
@@ -145,7 +146,7 @@
                         <Bold>
                             <Run FontWeight="Bold">Estimated Time: </Run>
                         </Bold>
-                        <Run Text="{Binding SelectedTour.Estimate, Converter={StaticResource TimeOnlyConverter}}" />
+                    <TextBlock Text="{Binding SelectedTour.Estimate, Converter={StaticResource SecondsToTimeConverter}}" />
                 </TextBlock>
             </ListBoxItem>
         </ListBox>

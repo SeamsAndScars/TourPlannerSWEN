@@ -18,7 +18,7 @@ namespace TourPlanner_Client.Models
         public string Destination { get; set; }
         public _TransportType Ttype { get; set; }
         public float Distance { get; set; }
-        public DateTime Estimate { get; set; }
+        public int Estimate { get; set; }
         public string ImageFileName { get; set; }
 
 
@@ -35,7 +35,7 @@ namespace TourPlanner_Client.Models
             TourLogs = new List<TourLogs>();
             Ttype = ttype;
             Distance = 756;
-            Estimate = new DateTime(7, 5, 7).ToUniversalTime();
+            Estimate = 0;
             ImageFileName = string.Empty;
             NewImage = string.Empty;
         }

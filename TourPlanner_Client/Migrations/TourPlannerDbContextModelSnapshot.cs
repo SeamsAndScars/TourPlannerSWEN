@@ -39,8 +39,8 @@ namespace TourPlanner_Client.Migrations
                     b.Property<float>("Distance")
                         .HasColumnType("real");
 
-                    b.Property<DateTime>("Estimate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<int>("Estimate")
+                        .HasColumnType("integer");
 
                     b.Property<string>("ImageFileName")
                         .IsRequired()

@@ -23,7 +23,7 @@ namespace TourPlanner_Client.Migrations
                     Destination = table.Column<string>(type: "text", nullable: false),
                     Ttype = table.Column<string>(type: "text", nullable: false),
                     Distance = table.Column<float>(type: "real", nullable: false),
-                    Estimate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Estimate = table.Column<int>(type: "integer", nullable: false),
                     ImageFileName = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
