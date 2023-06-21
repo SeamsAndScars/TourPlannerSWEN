@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TourPlanner_Client.Models
 {
-    public class Tour
+    public class Tour 
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -19,9 +19,11 @@ namespace TourPlanner_Client.Models
         public _TransportType Ttype { get; set; }
         public float Distance { get; set; }
         public DateTime Estimate { get; set; }
+        public string ImageFileName { get; set; }
+
 
         [NotMapped]
-        public object Image { get; set; }
+        public string NewImage { get; set; }
 
         public Tour(string Name, string Description, string Source, string Destination, _TransportType ttype)
         {
@@ -34,7 +36,8 @@ namespace TourPlanner_Client.Models
             Ttype = ttype;
             Distance = 756;
             Estimate = new DateTime(7, 5, 7).ToUniversalTime();
-            Image = new object();
+            ImageFileName = string.Empty;
+            NewImage = string.Empty;
         }
     }
 

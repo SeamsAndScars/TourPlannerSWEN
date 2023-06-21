@@ -42,6 +42,10 @@ namespace TourPlanner_Client.Migrations
                     b.Property<DateTime>("Estimate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<string>("ImageFileName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");

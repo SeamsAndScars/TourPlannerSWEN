@@ -12,7 +12,7 @@ using TourPlanner_Client.DAL.Database;
 namespace TourPlanner_Client.Migrations
 {
     [DbContext(typeof(TourPlannerDbContext))]
-    [Migration("20230614143152_InitialCreate")]
+    [Migration("20230621115833_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -44,6 +44,10 @@ namespace TourPlanner_Client.Migrations
 
                     b.Property<DateTime>("Estimate")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ImageFileName")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()

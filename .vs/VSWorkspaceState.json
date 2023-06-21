@@ -3,10 +3,11 @@
     "",
     "\\TourPlanner_Client",
     "\\TourPlanner_Client\\BL",
+    "\\TourPlanner_Client\\BL\\Models",
     "\\TourPlanner_Client\\Commands",
     "\\TourPlanner_Client\\ViewModels",
     "\\TourPlanner_Client\\Views"
   ],
-  "SelectedNode": "\\TourPlanner_Client\\Views\\ListTourView.xaml",
+  "SelectedNode": "\\TourPlanner_Client\\BL\\TourManager.cs",
   "PreviewInSolutionExplorer": false
 }

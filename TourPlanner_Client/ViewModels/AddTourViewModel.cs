@@ -74,7 +74,6 @@ namespace TourPlanner_Client.ViewModels
                 OnPropertyChanged(nameof(Destination));
             }
         }
-       
 
         private ObservableCollection<Tour> tours;
         public ObservableCollection<Tour> Tours
