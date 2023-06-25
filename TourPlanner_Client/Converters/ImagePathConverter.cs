@@ -13,7 +13,7 @@ namespace TourPlanner_Client.Converters
             if (value is string fileName)
             {
                 // Manually specify the base directory
-                string baseDirectory = @"C:\Users\Jakob\OneDrive\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client";
+                string baseDirectory = Directory.GetCurrentDirectory();
 
                 // Construct the full image path
                 string imagePath = Path.Combine(baseDirectory, "Images", fileName);

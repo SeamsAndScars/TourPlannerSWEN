@@ -43,9 +43,15 @@ namespace TourPlanner_Client.APIs
                     {
                         byte[] imageData = await response.Content.ReadAsByteArrayAsync();
 
+                        string target = Path.Combine(Directory.GetCurrentDirectory() , "Images");
+                        if (!Directory.Exists(target))
+                        {
+                            Directory.CreateDirectory(target);
+                        }
+
                         // Save image locally
                         string imageFileName = $"{Guid.NewGuid()}.png";
-                        string imagePath = Path.Combine("..", "..", "..", "Images", imageFileName);
+                        string imagePath = Path.Combine(target, imageFileName);
                         File.WriteAllBytes(imagePath, imageData);
 
                         int estimate = seconds;

@@ -4,6 +4,7 @@ using TourPlanner_Client.Commands;
 using TourPlanner_Client.Models;
 using TourPlanner_Client.Stores;
 using TourPlanner_Client.BL;
+using System.Windows.Data;
 
 namespace TourPlanner_Client.ViewModels
 {
@@ -19,6 +20,8 @@ namespace TourPlanner_Client.ViewModels
                 OnPropertyChanged(nameof(Tours));
             }
         }
+
+        private object _myCollectionLock = new object();
 
         private NavigationStore navigationStore;
         public NavigationStore NavigationStore
@@ -50,6 +53,7 @@ namespace TourPlanner_Client.ViewModels
             this.NavigationStore = navigationStore;
 
             Tours = new ObservableCollection<Tour>();
+            BindingOperations.EnableCollectionSynchronization(Tours, _myCollectionLock);
 
             TourManager tourManager = new TourManager();
             List<Tour> allTours = tourManager.GetTours();

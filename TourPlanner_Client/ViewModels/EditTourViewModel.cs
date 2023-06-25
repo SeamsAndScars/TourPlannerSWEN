@@ -76,7 +76,7 @@ namespace TourPlanner_Client.ViewModels
 
         public ICommand EditTourCommand { get; }
 
-        public Commands.CancelTourCommand CancelTourCommand { get; }
+        public CancelTourCommand CancelTourCommand { get; }
 
         public EditTourViewModel(NavigationStore navigationStore, Tour selectedTour)
         {
@@ -86,7 +86,7 @@ namespace TourPlanner_Client.ViewModels
             SelectedTransportType = tour.Ttype;
             //SubmitChangeCommand = new SubmitChangeCommand(this);
             DeleteTourCommand = new DeleteTourCommand(this);
-            CancelTourCommand = new Commands.CancelTourCommand(navigationStore);
+            CancelTourCommand = new CancelTourCommand(navigationStore);
         }
 
         // Additional logic for SubmitChangeCommand and DeleteTourCommand

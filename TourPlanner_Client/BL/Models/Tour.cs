@@ -34,7 +34,7 @@ namespace TourPlanner_Client.Models
             this.Destination = Destination;
             TourLogs = new List<TourLogs>();
             Ttype = ttype;
-            Distance = 756;
+            Distance = 0;
             Estimate = 0;
             ImageFileName = string.Empty;
             NewImage = string.Empty;

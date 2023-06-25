@@ -24,10 +24,10 @@
         /// </summary>
         public partial class ListTourView : UserControl
         {
-        private NavigationStore navigationStore = new NavigationStore();
-       // private INavigationStore navigationStore;
+            private NavigationStore navigationStore = new NavigationStore();
+            // private INavigationStore navigationStore;
 
-        public ListTourView()
+            public ListTourView()
             {
                 InitializeComponent();
                 //navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
@@ -38,18 +38,18 @@
             }
 
         //private readonly NavigationStore _navigationStore;
-        private void ListBoxItem_DoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
-            if (sender is ListBoxItem listBoxItem && listBoxItem.DataContext is Tour selectedTour)
+            private void ListBoxItem_DoubleClick(object sender, MouseButtonEventArgs e)
             {
-                navigationStore = ((ListTourViewModel)DataContext).NavigationStore;
-                navigationStore.CurrentViewModel = new EditTourViewModel(navigationStore, selectedTour);
+            
+                if (sender is ListBoxItem listBoxItem && listBoxItem.DataContext is Tour selectedTour)
+                {
+                    navigationStore = ((ListTourViewModel)DataContext).NavigationStore;
+                    navigationStore.CurrentViewModel = new EditTourViewModel(navigationStore, selectedTour);
+                }
             }
-        }
 
 
-        private void OnCurrentViewModelChanged()
+            private void OnCurrentViewModelChanged()
             {
                 ViewModelBase currentViewModel = navigationStore.CurrentViewModel;
 
