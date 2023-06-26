@@ -8,7 +8,7 @@ using TourPlanner_Client.Models;
 using TourPlanner_Client.ViewModels;
 using System.IO;
 using TourPlanner_Client.APIs;
-
+using System.Windows;
 
 namespace TourPlanner_Client.BL
 {
@@ -58,6 +58,7 @@ namespace TourPlanner_Client.BL
             {
                 // Handle the error case
                 // TODO: Handle the error case
+                MessageBox.Show("Error during MapQuest API call"); 
             }
         }
 

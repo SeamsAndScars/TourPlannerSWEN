@@ -26,7 +26,6 @@ namespace TourPlanner_Client.Commands
 
         public override void Execute(object parameter)
         {
-
             _navigationStore.CurrentViewModel = new ListTourViewModel(_navigationStore);
         }
     }

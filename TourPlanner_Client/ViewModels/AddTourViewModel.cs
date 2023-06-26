@@ -101,14 +101,17 @@ namespace TourPlanner_Client.ViewModels
 
 
         
-        public ICommand SubmitTourCommand => new SubmitTourCommand(this);
         public ICommand AddTourCommand { get; }
 
+        public SubmitTourCommand SubmitTourCommand { get; }
         public Commands.CancelTourCommand CancelTourCommand{ get; }
+
 
         public AddTourViewModel(NavigationStore navigationStore)
         {
-            CancelTourCommand = new Commands.CancelTourCommand(navigationStore);
+            CancelTourCommand = new CancelTourCommand(navigationStore);
+            SubmitTourCommand = new SubmitTourCommand(navigationStore, this);
+
         }
 
 

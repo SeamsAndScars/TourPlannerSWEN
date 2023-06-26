@@ -42,9 +42,20 @@
         </Grid.RowDefinitions>
 
         <!-- Tabs -->
-        <TabControl Grid.Column="2" Grid.RowSpan="5">
-            <TabItem Header="Description">
-                <TextBlock Text="{Binding SelectedTour.Description}" />
+
+        <!-- Image -->
+        
+        <TextBlock Grid.Column="2" Grid.RowSpan="5">
+                    <Bold>
+                        <Run FontWeight="Bold" FontSize="16">Description: </Run>
+                    </Bold>
+                    <LineBreak />
+                    <Run Text="{Binding SelectedTour.Description}" />
+        </TextBlock>
+
+        <TabControl Grid.Column="1" Grid.RowSpan="2">
+            <TabItem Header="Image">
+                <Image Grid.Column="1" Grid.RowSpan="2" Height="Auto" Width="Auto" Source="{Binding SelectedTour.ImageFileName, Converter={StaticResource ImagePathConverter}}" />
             </TabItem>
             <TabItem Header="TourLogs">
                 <Grid Background="#FFE5E5E5"/>
@@ -89,9 +100,7 @@
             </TextBox.Style>
         </TextBox>
 
-        <!-- Image -->
-        <Image Grid.Column="1" Grid.RowSpan="2" Height="Auto" Width="Auto" Source="{Binding SelectedTour.ImageFileName, Converter={StaticResource ImagePathConverter}}" />
-
+        
         <!-- Details -->
         <ListBox Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" BorderThickness="0" >
             <ListBox.ItemContainerStyle>

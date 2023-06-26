@@ -53,7 +53,7 @@ namespace TourPlanner_Client.ViewModels
             this.NavigationStore = navigationStore;
 
             Tours = new ObservableCollection<Tour>();
-            BindingOperations.EnableCollectionSynchronization(Tours, _myCollectionLock);
+           // BindingOperations.EnableCollectionSynchronization(Tours, _myCollectionLock);
 
             TourManager tourManager = new TourManager();
             List<Tour> allTours = tourManager.GetTours();

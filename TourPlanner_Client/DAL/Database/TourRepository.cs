@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using TourPlanner_Client.DAL.Database;
 using TourPlanner_Client.Models;
 
@@ -18,6 +19,7 @@ internal class TourRepository
     {
         dbContext.Tours.Add(tour);
         dbContext.SaveChanges();
+        MessageBox.Show("DB");
     }
 
     // Get a tour
