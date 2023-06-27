@@ -14,7 +14,7 @@ namespace TourPlanner_Client.DAL.Database
     public class TourPlannerDbContext : DbContext
     {
         public DbSet<Tour> Tours { get; set; }
-        //public DbSet<TourLog> TourLogs { get; set; }
+        public DbSet<TourLog> TourLogs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -20,6 +20,9 @@
             <DataTemplate DataType="{x:Type viewModels:EditTourViewModel}">
                 <views:EditTourView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:AddTourLogViewModel}">
+                <views:AddTourLogView/>
+            </DataTemplate>
         </Grid.Resources>
 
         <ContentControl Content="{Binding CurrentViewModel}" />

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\App.xaml
-4980969464
+51435602828
 
-36-2032077185
+39-1772087946
 2101228951025
-MainWindow.xaml;Views\AddTourView.xaml;Views\EditTourView.xaml;Views\ListTourView.xaml;
+MainWindow.xaml;Views\AddTourLogView.xaml;Views\AddTourView.xaml;Views\EditTourView.xaml;Views\ListTourView.xaml;
 
-False
+True
 

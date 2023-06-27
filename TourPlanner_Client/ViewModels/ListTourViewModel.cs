@@ -5,11 +5,14 @@ using TourPlanner_Client.Models;
 using TourPlanner_Client.Stores;
 using TourPlanner_Client.BL;
 using System.Windows.Data;
+using System;
+using System.Windows;
 
 namespace TourPlanner_Client.ViewModels
 {
     public class ListTourViewModel : ViewModelBase
     {
+        private TourManager tourManager;
         private ObservableCollection<Tour> tours;
         public ObservableCollection<Tour> Tours
         {
@@ -20,8 +23,6 @@ namespace TourPlanner_Client.ViewModels
                 OnPropertyChanged(nameof(Tours));
             }
         }
-
-        private object _myCollectionLock = new object();
 
         private NavigationStore navigationStore;
         public NavigationStore NavigationStore
@@ -50,21 +51,29 @@ namespace TourPlanner_Client.ViewModels
 
         public ListTourViewModel(NavigationStore navigationStore)
         {
-            this.NavigationStore = navigationStore;
+            NavigationStore = navigationStore;
 
-            Tours = new ObservableCollection<Tour>();
+            tourManager = TourManager.Instance;
+            tourManager.TourModified += TourManager_TourModified;
+            LoadTours();
+
            // BindingOperations.EnableCollectionSynchronization(Tours, _myCollectionLock);
-
-            TourManager tourManager = new TourManager();
-            List<Tour> allTours = tourManager.GetTours();
-
-            foreach (var tour in allTours)
-            {
-                Tours.Add(tour);
-            }
 
             AddTourCommand = new AddTourCommand(navigationStore);
             EditTourCommand = new EditTourCommand(navigationStore);
+        }
+
+        private void LoadTours()
+        {
+            List<Tour> tourList = tourManager.GetTours();
+            Tours = new ObservableCollection<Tour>(tourList);
+        }
+
+        private void TourManager_TourModified(object sender, EventArgs e)
+        {
+            MessageBox.Show("Before" + Tours.Count.ToString());
+            LoadTours();
+            MessageBox.Show(" After" + Tours.Count.ToString());
         }
 
     }

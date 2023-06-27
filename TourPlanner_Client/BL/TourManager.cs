@@ -9,6 +9,7 @@ using TourPlanner_Client.ViewModels;
 using System.IO;
 using TourPlanner_Client.APIs;
 using System.Windows;
+using System.Windows.Input;
 
 namespace TourPlanner_Client.BL
 {
@@ -16,6 +17,20 @@ namespace TourPlanner_Client.BL
     {
         private readonly TourRepository tourRepository;
         private readonly MapQuestService mapQuestService;
+
+        public event EventHandler TourModified;
+
+        private static TourManager instance;
+        public static TourManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new TourManager();
+
+                return instance;
+            }
+        }
 
         public TourManager()
         {
@@ -60,23 +75,8 @@ namespace TourPlanner_Client.BL
                 // TODO: Handle the error case
                 MessageBox.Show("Error during MapQuest API call"); 
             }
+            OnTourModified();
         }
-
-        //public void UpdateTour(EditTourViewModel tourViewModel)
-        //{
-        //    Tour updatedTour = new Tour(
-        //        tourViewModel.Name,
-        //        tourViewModel.Description,
-        //        tourViewModel.Source,
-        //        tourViewModel.Destination,
-        //        tourViewModel.SelectedTransportType
-        //    );
-
-        //    // Set the ID of the updated tour to the ID of the existing tour
-        //    updatedTour.Id = tourViewModel.Id;
-
-        //    tourRepository.UpdateTour(updatedTour);
-        //}
 
         public async Task UpdateTour(EditTourViewModel tourViewModel)
         {
@@ -120,6 +120,13 @@ namespace TourPlanner_Client.BL
 
             // Update the tour in the repository
             tourRepository.UpdateTour(existingTour);
+
+            OnTourModified();
+        }
+
+        protected virtual void OnTourModified()
+        {    
+            TourModified?.Invoke(this, EventArgs.Empty);
         }
     }
 }

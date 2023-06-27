@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace TourPlanner_Client.Models
 {
-    public class TourLogs
+    public class TourLog
     {
         public DateTime Date { get; set; }
         public string Comment { get; set; }
         public int Id { get; set; }
         public _Difficulty Difficulty { get; set; }
-        public DateTime Time { get; set; }
+        public TimeOnly Time { get; set; }
         public _Rating Rating { get; set; }
 
-        public TourLogs(DateTime date, string comment, int id, _Difficulty difficulty, DateTime time, _Rating rating)
+        public TourLog(DateTime date, string comment, int id, _Difficulty difficulty, TimeOnly time, _Rating rating)
         {
             Date = date;
             Comment = comment;

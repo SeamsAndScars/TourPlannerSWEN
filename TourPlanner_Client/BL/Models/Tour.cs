@@ -12,7 +12,7 @@ namespace TourPlanner_Client.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public List<TourLogs>? TourLogs { get; set; }
+        public List<TourLog>? TourLogs { get; set; }
         public string Description { get; set; }
         public string Source { get; set; }
         public string Destination { get; set; }
@@ -32,7 +32,7 @@ namespace TourPlanner_Client.Models
             this.Description = Description;
             this.Source = Source;
             this.Destination = Destination;
-            TourLogs = new List<TourLogs>();
+            TourLogs = new List<TourLog>();
             Ttype = ttype;
             Distance = 0;
             Estimate = 0;

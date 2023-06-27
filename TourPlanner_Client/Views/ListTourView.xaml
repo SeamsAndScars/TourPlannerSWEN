@@ -12,15 +12,22 @@
     <UserControl.Resources>
         <converters:SecondsToTimeConverter x:Key="SecondsToTimeConverter" />
         <converters:ImagePathConverter x:Key="ImagePathConverter" />
-        <Style x:Key="BorderlessButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderBrush" Value="Transparent" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Padding" Value="0" />
+        <Style TargetType="TabControl">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <ContentPresenter />
+                    <ControlTemplate TargetType="TabControl">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <!-- Tab headers -->
+                            <TabPanel Grid.Row="0" Panel.ZIndex="1" Background="Transparent" IsItemsHost="True"/>
+                            <!-- Tab content -->
+                            <Border Grid.Row="1" BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}">
+                                <ContentPresenter ContentSource="SelectedContent"/>
+                            </Border>
+                        </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -41,25 +48,86 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <!-- Tabs -->
-
-        <!-- Image -->
-        
-        <TextBlock Grid.Column="2" Grid.RowSpan="5">
+        <!-- Description -->
+        <TextBlock Grid.Column="2" Grid.RowSpan="2">
                     <Bold>
                         <Run FontWeight="Bold" FontSize="16">Description: </Run>
                     </Bold>
                     <LineBreak />
                     <Run Text="{Binding SelectedTour.Description}" />
         </TextBlock>
-
+        
+        <!-- Description -->
+        <ListBox Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" BorderThickness="0" >
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBoxItem IsEnabled="False" FontWeight="Bold">Attributes:</ListBoxItem>
+            <ListBoxItem IsEnabled="False" FontSize="12">
+                <TextBlock>
+                    <Bold>
+                        <Run FontWeight="Bold">Popularity: </Run>
+                    </Bold>
+                    <Run Text="{Binding SelectedTour.Source}" />
+                </TextBlock>
+            </ListBoxItem>
+            <ListBoxItem IsEnabled="False" FontSize="12">
+                <TextBlock>
+                        <Bold>
+                            <Run FontWeight="Bold">Child-friendliness: </Run>
+                        </Bold>
+                        <Run Text="{Binding SelectedTour.Distance}" />
+                </TextBlock>
+            </ListBoxItem>
+        </ListBox>
+        
+        <!-- Tabs -->
         <TabControl Grid.Column="1" Grid.RowSpan="2">
             <TabItem Header="Image">
                 <Image Grid.Column="1" Grid.RowSpan="2" Height="Auto" Width="Auto" Source="{Binding SelectedTour.ImageFileName, Converter={StaticResource ImagePathConverter}}" />
             </TabItem>
             <TabItem Header="TourLogs">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
+        <TabItem.Style>
+            <Style TargetType="TabItem">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding SelectedTour}" Value="{x:Null}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </TabItem.Style>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.85*" />
+                <ColumnDefinition Width="0.15*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Grid.Column="1"  Command="{Binding AddTourLogCommand}" >
+                <TextBlock TextWrapping ="Wrap" TextAlignment="Center">
+                    Add a new <LineBreak/> TourLog
+                </TextBlock>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="1"  Command="{Binding EditTourLogCommand}" >
+                        
+                <TextBlock TextWrapping ="Wrap" TextAlignment="Center">
+                    Edit <LineBreak/> TourLog
+                </TextBlock>
+            </Button>
+        </Grid>
+    </TabItem>
         </TabControl>
 
         <!-- TourList -->
@@ -68,7 +136,6 @@
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Margin" Value="0,0,0,5" />
                     <EventSetter Event="PreviewMouseDoubleClick" Handler="ListBoxItem_DoubleClick" />
-                    
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
@@ -83,8 +150,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        
         <!-- Searchbar -->
-        <TextBox Grid.Row="4" Text="Test2" Width="Auto" BorderThickness="0" HorizontalAlignment="Stretch" Background="#F1F1F1" Foreground="#333333" Padding="8" FontSize="12" FontFamily="Segoe UI" VerticalAlignment="Center">
+        <TextBox Grid.Row="4" Text="Search" Width="Auto" BorderThickness="0" HorizontalAlignment="Stretch" Background="#F1F1F1" Foreground="#333333" Padding="8" FontSize="12" FontFamily="Segoe UI" VerticalAlignment="Center">
             <TextBox.Style>
                 <Style TargetType="TextBox">
                     <Setter Property="Foreground" Value="#999999" />

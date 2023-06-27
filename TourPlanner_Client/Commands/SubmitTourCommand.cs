@@ -30,7 +30,7 @@ namespace TourPlanner_Client.Commands
         //when pressing the submit button, a new tour gets added into the db
         public override void Execute(object parameter)
         {
-            TourManager tourManager = new TourManager();
+            TourManager tourManager = TourManager.Instance;
             tourManager.AddTour(ViewModel);
 
             //MessageBox.Show("Tour added!");

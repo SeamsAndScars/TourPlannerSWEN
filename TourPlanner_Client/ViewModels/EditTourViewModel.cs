@@ -70,8 +70,7 @@ namespace TourPlanner_Client.ViewModels
 
         public List<_TransportType> TransportTypes { get; } = Enum.GetValues(typeof(_TransportType)).Cast<_TransportType>().ToList();
 
-        //public ICommand SubmitChangeCommand { get; }
-        public ICommand SubmitChangeCommand => new SubmitChangeCommand(this);
+        public ICommand SubmitChangeCommand => new SubmitChangeCommand(this, _navigationStore);
         public ICommand DeleteTourCommand { get; }
 
         public ICommand EditTourCommand { get; }
