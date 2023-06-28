@@ -13,8 +13,15 @@ namespace TourPlanner_Client.ViewModels
     {
         private Tour tour;
         private readonly NavigationStore _navigationStore;
+        private _TransportType _selectedTransportType;
 
-        public Guid Id { get; set; } // Add Id property
+        //GUID used for storing and accessing Tours in the DB
+        public Guid Id { get; set; }
+        public List<_TransportType> TransportTypes { get; } = Enum.GetValues(typeof(_TransportType)).Cast<_TransportType>().ToList();
+        public ICommand SubmitChangeCommand => new SubmitChangeCommand(this, _navigationStore);
+        public ICommand DeleteTourCommand { get; }
+        public ICommand EditTourCommand { get; }
+        public CancelTourCommand CancelTourCommand { get; }
 
         public string Name
         {
@@ -57,7 +64,6 @@ namespace TourPlanner_Client.ViewModels
         }
 
         //Displays the different Values of the TransportType enumerable
-        private _TransportType _selectedTransportType;
         public _TransportType SelectedTransportType
         {
             get { return _selectedTransportType; }
@@ -67,15 +73,6 @@ namespace TourPlanner_Client.ViewModels
                 OnPropertyChanged(nameof(SelectedTransportType));
             }
         }
-
-        public List<_TransportType> TransportTypes { get; } = Enum.GetValues(typeof(_TransportType)).Cast<_TransportType>().ToList();
-
-        public ICommand SubmitChangeCommand => new SubmitChangeCommand(this, _navigationStore);
-        public ICommand DeleteTourCommand { get; }
-
-        public ICommand EditTourCommand { get; }
-
-        public CancelTourCommand CancelTourCommand { get; }
 
         public EditTourViewModel(NavigationStore navigationStore, Tour selectedTour)
         {

@@ -32,12 +32,7 @@
                 InitializeComponent();
                 //navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
             }
-            private void Button_Click(object sender, RoutedEventArgs e)
-            {
-                // Handle the button click event here
-            }
-
-        //private readonly NavigationStore _navigationStore;
+            
             private void ListBoxItem_DoubleClick(object sender, MouseButtonEventArgs e)
             {
             

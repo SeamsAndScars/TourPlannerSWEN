@@ -14,6 +14,13 @@ namespace TourPlanner_Client.ViewModels
     {
         private TourManager tourManager;
         private ObservableCollection<Tour> tours;
+        private NavigationStore navigationStore;
+        private Tour selectedTour;
+
+        public AddTourCommand AddTourCommand { get; }
+        public EditTourCommand EditTourCommand { get; }
+        public AddTourLogCommand AddTourLogCommand { get; }
+
         public ObservableCollection<Tour> Tours
         {
             get { return tours; }
@@ -24,7 +31,6 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        private NavigationStore navigationStore;
         public NavigationStore NavigationStore
         {
             get { return navigationStore; }
@@ -35,7 +41,6 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        private Tour selectedTour;
         public Tour SelectedTour
         {
             get { return selectedTour; }
@@ -46,8 +51,6 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        public AddTourCommand AddTourCommand { get; }
-        public EditTourCommand EditTourCommand { get; }
 
         public ListTourViewModel(NavigationStore navigationStore)
         {
@@ -57,10 +60,9 @@ namespace TourPlanner_Client.ViewModels
             tourManager.TourModified += TourManager_TourModified;
             LoadTours();
 
-           // BindingOperations.EnableCollectionSynchronization(Tours, _myCollectionLock);
-
             AddTourCommand = new AddTourCommand(navigationStore);
             EditTourCommand = new EditTourCommand(navigationStore);
+            AddTourLogCommand = new AddTourLogCommand(this,navigationStore);
         }
 
         private void LoadTours()
@@ -71,9 +73,7 @@ namespace TourPlanner_Client.ViewModels
 
         private void TourManager_TourModified(object sender, EventArgs e)
         {
-            MessageBox.Show("Before" + Tours.Count.ToString());
             LoadTours();
-            MessageBox.Show(" After" + Tours.Count.ToString());
         }
 
     }

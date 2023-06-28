@@ -10,32 +10,27 @@ using TourPlanner_Client.ViewModels;
 
 namespace TourPlanner_Client.Commands
 {
-    class AddTourLogCommand : CommandBase
+    public class AddTourLogCommand : CommandBase
     {
         private readonly NavigationStore _navigationStore;
-        public EditTourViewModel ViewModel { get; set; }
+        public ListTourViewModel _viewModel { get; set; }
 
 
-        public AddTourLogCommand(EditTourViewModel viewModel)
+        public AddTourLogCommand(ListTourViewModel viewModel, NavigationStore navigationStore)
         {
-            this.ViewModel = viewModel;
-        }
-
-        public AddTourLogCommand(NavigationStore navigationStore)
-        {
+            _viewModel = viewModel;
             _navigationStore = navigationStore;
         }
 
         public override void Execute(object parameter)
         {
-            if (parameter is Tour selectedTour)
+            if (_viewModel.SelectedTour != null)
             {
-                _navigationStore.CurrentViewModel = new AddTourLogViewModel(_navigationStore, selectedTour);
-
+                _navigationStore.CurrentViewModel = new AddTourLogViewModel(_navigationStore, _viewModel.SelectedTour);
             }
             else
             {
-                MessageBox.Show("Invalid tour selected.");
+                MessageBox.Show("No tour selected.");
             }
         }
     }

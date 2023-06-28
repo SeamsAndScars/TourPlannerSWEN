@@ -18,6 +18,18 @@ namespace TourPlanner_Client.ViewModels
     {
        
         private string _Name = string.Empty;
+        private string _Description = string.Empty;
+        private string _Source = string.Empty;
+        private string _Destination = string.Empty;
+        private string newTourName;
+        private _TransportType _selectedTransportType;
+        private ObservableCollection<Tour> tours;
+
+        public ICommand AddTourCommand { get; }
+        public SubmitTourCommand SubmitTourCommand { get; }
+        public CancelTourCommand CancelTourCommand { get; }
+        public IEnumerable<_TransportType> TransportTypes => Enum.GetValues(typeof(_TransportType)).Cast<_TransportType>();
+
         public string Name
         {
             get
@@ -31,8 +43,7 @@ namespace TourPlanner_Client.ViewModels
                 OnPropertyChanged(nameof(Name));
             }
         }
-        //public List<TourLogs>? TourLogs { get; set; }
-        private string _Description = string.Empty;
+
         public string Description
         {
             get
@@ -46,7 +57,6 @@ namespace TourPlanner_Client.ViewModels
                 OnPropertyChanged(nameof(Description));
             }
         }
-        private string _Source = string.Empty;
         public string Source
         {
             get
@@ -60,7 +70,6 @@ namespace TourPlanner_Client.ViewModels
                 OnPropertyChanged(nameof(Source));
             }
         }
-        private string _Destination = string.Empty;
         public string Destination
         {
             get
@@ -75,7 +84,6 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        private ObservableCollection<Tour> tours;
         public ObservableCollection<Tour> Tours
         {
             get { return tours; }
@@ -86,7 +94,6 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        private string newTourName;
         public string NewTourName
         {
             get { return newTourName; }
@@ -99,14 +106,6 @@ namespace TourPlanner_Client.ViewModels
 
         // Other properties for capturing the new tour details
 
-
-        
-        public ICommand AddTourCommand { get; }
-
-        public SubmitTourCommand SubmitTourCommand { get; }
-        public Commands.CancelTourCommand CancelTourCommand{ get; }
-
-
         public AddTourViewModel(NavigationStore navigationStore)
         {
             CancelTourCommand = new CancelTourCommand(navigationStore);
@@ -116,7 +115,6 @@ namespace TourPlanner_Client.ViewModels
 
 
         //Displays the different Values of the TransportType enumerable
-        private _TransportType _selectedTransportType;
         public _TransportType SelectedTransportType
         {
             get { return _selectedTransportType; }
@@ -127,7 +125,6 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        public IEnumerable<_TransportType> TransportTypes => Enum.GetValues(typeof(_TransportType)).Cast<_TransportType>();
     }
 
 }

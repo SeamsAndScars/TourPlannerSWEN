@@ -11,22 +11,55 @@ using TourPlanner_Client.Stores;
 
 namespace TourPlanner_Client.ViewModels
 {
-    internal class AddTourLogViewModel : ViewModelBase
+    public class AddTourLogViewModel : ViewModelBase
     {
         private TourManager tourManager;
+        private TourLog tourLog;
+        private NavigationStore navigationStore;
         private Tour tour;
-        private ObservableCollection<Tour> tours;
-        public ObservableCollection<Tour> Tours
+        private _Rating _selectedRating;
+        private _Difficulty _selectedDifficulty;
+        private string _Comment = string.Empty;
+        private Tour selectedTour;
+
+        public List<_Difficulty> DifficultyTypes { get; } = Enum.GetValues(typeof(_Difficulty)).Cast<_Difficulty>().ToList();
+        public List<_Rating> RatingTypes { get; } = Enum.GetValues(typeof(_Rating)).Cast<_Rating>().ToList();
+        public CancelTourCommand CancelTourCommand { get; }
+
+        public string Comment
         {
-            get { return tours; }
+            get
+            {
+                return _Comment;
+            }
             set
             {
-                tours = value;
-                OnPropertyChanged(nameof(Tours));
+                if (value == null) { return; }
+                _Comment = value;
+                OnPropertyChanged(nameof(Comment));
             }
         }
 
-        private NavigationStore navigationStore;
+        public _Difficulty SelectedDifficulty
+        {
+            get { return _selectedDifficulty; }
+            set
+            {
+                _selectedDifficulty = value;
+                OnPropertyChanged(nameof(SelectedDifficulty));
+            }
+        }
+        
+        public _Rating SelectedRating
+        {
+            get { return _selectedRating; }
+            set
+            {
+                _selectedRating = value;
+                OnPropertyChanged(nameof(SelectedRating));
+            }
+        }
+
         public NavigationStore NavigationStore
         {
             get { return navigationStore; }
@@ -37,7 +70,6 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        private Tour selectedTour;
         public Tour SelectedTour
         {
             get { return selectedTour; }
@@ -47,15 +79,12 @@ namespace TourPlanner_Client.ViewModels
                 OnPropertyChanged(nameof(SelectedTour));
             }
         }
-        public CancelTourCommand CancelTourCommand { get; }
 
         public AddTourLogViewModel(NavigationStore navigationStore, Tour selectedTour)
         {
-
             this.navigationStore = navigationStore;
             tour = selectedTour;
             CancelTourCommand = new CancelTourCommand(navigationStore);
         }
-
     }
 }
