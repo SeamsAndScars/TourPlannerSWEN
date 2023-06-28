@@ -49,7 +49,7 @@
         </Grid.RowDefinitions>
 
         <!-- Description -->
-        <TextBlock Grid.Column="2" Grid.RowSpan="2">
+        <TextBlock Grid.Column="2" Grid.RowSpan="2" TextWrapping="Wrap">
                     <Bold>
                         <Run FontWeight="Bold" FontSize="16">Description: </Run>
                     </Bold>

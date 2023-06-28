@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="s\**" />
+    <EmbeddedResource Remove="s\**" />
+    <None Remove="s\**" />
+    <Page Remove="s\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.7">
@@ -27,10 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="
-			
-
-s\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 

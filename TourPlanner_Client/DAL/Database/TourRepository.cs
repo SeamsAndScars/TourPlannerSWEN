@@ -19,7 +19,6 @@ internal class TourRepository
     {
         dbContext.Tours.Add(tour);
         dbContext.SaveChanges();
-        MessageBox.Show("DB");
     }
 
     // Get a tour
@@ -50,5 +49,11 @@ internal class TourRepository
             dbContext.Tours.Remove(tour);
             dbContext.SaveChanges();
         }
+    }
+
+    public void AddTourLog(TourLog tourLog)
+    {
+        dbContext.TourLogs.Add(tourLog);
+        dbContext.SaveChanges();
     }
 }

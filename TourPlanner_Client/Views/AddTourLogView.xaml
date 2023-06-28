@@ -29,7 +29,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="1" Grid.Column="1" Text="Startdate:" TextAlignment="Center" VerticalAlignment="Center"/>
-        <DatePicker Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" DisplayDate="{Binding DateTime.Now}" FirstDayOfWeek="Monday" SelectedDate="{Binding Date}">
+        <DatePicker Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" FirstDayOfWeek="Monday" SelectedDate="{Binding SelectedDate}">
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="Text" Value="Select Date" />
@@ -38,14 +38,14 @@
         </DatePicker>
 
         <TextBlock Grid.Row="2" Grid.Column="1" Text="Comment:" TextAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" TextWrapping="Wrap" Text="{Binding TourLog.Comment}" TextAlignment="Center"  Height="25" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" TextWrapping="Wrap" Text="{Binding Comment}" TextAlignment="Left"  Height="25" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
 
         <TextBlock Grid.Row="3" Grid.Column="1" Text="Difficulty:" TextAlignment="Center" VerticalAlignment="Center"/>
         <ComboBox Grid.Row="3" Grid.Column="2" Height="25" ItemsSource="{Binding DifficultyTypes}" SelectedItem="{Binding SelectedDifficulty}" />
 
         <TextBlock Grid.Row="4" Grid.Column="1" Text="Total time:" TextAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="4" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Time}" TextAlignment="Center"  Height="25" VerticalAlignment="Center"/>
-        
+        <TextBox Grid.Row="4" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Time}" TextAlignment="Left"  Height="25" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+
         <TextBlock Grid.Row="5" Grid.Column="1" Text="Rating:" TextAlignment="Center" VerticalAlignment="Center"/>
         <ComboBox Grid.Row="5" Grid.Column="2" Height="25" ItemsSource="{Binding RatingTypes}" SelectedItem="{Binding SelectedRating}" />
 

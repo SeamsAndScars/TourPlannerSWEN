@@ -73,9 +73,31 @@ namespace TourPlanner_Client.BL
             {
                 // Handle the error case
                 // TODO: Handle the error case
-                MessageBox.Show("Error during MapQuest API call"); 
+                MessageBox.Show("Error during MapQuest API call");
             }
             OnTourModified();
+        }
+
+        public async Task AddTourLog(Tour selectedtour, AddTourLogViewModel viewModel)
+        {
+            if(viewModel is null)
+            {   
+                // Handle the error case when the tour does not exist
+                // TODO: Handle the error case
+                return;
+            }
+
+            
+            Tour existingTour = tourRepository.GetTour(selectedtour.Id);
+            if (existingTour == null)
+            {
+                // Handle the error case when the tour does not exist
+                // TODO: Handle the error case
+                return;
+            }
+
+            TourLog tourLog = new TourLog(existingTour.Id, viewModel.NonNullableSelectedDate, viewModel.Comment, viewModel.SelectedDifficulty, TimeOnly.MaxValue, viewModel.SelectedRating);
+            tourRepository.AddTourLog(tourLog);
         }
 
         public async Task UpdateTour(EditTourViewModel tourViewModel)

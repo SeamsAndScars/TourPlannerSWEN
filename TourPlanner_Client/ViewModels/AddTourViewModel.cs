@@ -110,9 +110,7 @@ namespace TourPlanner_Client.ViewModels
         {
             CancelTourCommand = new CancelTourCommand(navigationStore);
             SubmitTourCommand = new SubmitTourCommand(navigationStore, this);
-
         }
-
 
         //Displays the different Values of the TransportType enumerable
         public _TransportType SelectedTransportType

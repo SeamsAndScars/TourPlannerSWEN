@@ -30,16 +30,16 @@
 
 
 
-        <TextBox Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Name}" TextAlignment="Center"  Height="25" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Name}" TextAlignment="Left"  Height="25" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="1" Grid.Column="1" Text="Name" TextAlignment="Center" VerticalAlignment="Center"/>
 
-        <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" TextWrapping="Wrap" Text="{Binding Description}" TextAlignment="Center"  Height="25" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" TextWrapping="Wrap" Text="{Binding Description}" TextAlignment="Left"  Height="25" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="2" Grid.Column="1" Text="Description" TextAlignment="Center" VerticalAlignment="Center"/>
 
-        <TextBox Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Source}" TextAlignment="Center"  Height="25" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Source}" TextAlignment="Left"  Height="25" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="3" Grid.Column="1" Text="From:" TextAlignment="Center" VerticalAlignment="Center"/>
 
-        <TextBox Grid.Row="3" Grid.Column="5" TextWrapping="Wrap" Text="{Binding Destination}" TextAlignment="Center"  Height="25" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="3" Grid.Column="5" TextWrapping="Wrap" Text="{Binding Destination}" TextAlignment="Left"  Height="25" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="3" Grid.Column="4" Text="To:" TextAlignment="Center" VerticalAlignment="Center"/>
 
 

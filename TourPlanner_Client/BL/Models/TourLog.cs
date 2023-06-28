@@ -10,22 +10,23 @@ namespace TourPlanner_Client.Models
     {
         public DateTime Date { get; set; }
         public string Comment { get; set; }
-        public int Id { get; set; }
+        public Guid TourId { get; set; }
         public _Difficulty Difficulty { get; set; }
         public TimeOnly Time { get; set; }
         public _Rating Rating { get; set; }
+        public Guid Id {get; set;}
 
-        public TourLog(DateTime date, string comment, int id, _Difficulty difficulty, TimeOnly time, _Rating rating)
+        public TourLog(Guid tourId, DateTime date, string comment, _Difficulty difficulty, TimeOnly time, _Rating rating)
         {
+            Id = Guid.NewGuid();
+            TourId = tourId;
             Date = date;
             Comment = comment;
-            Id = id;
             Difficulty = difficulty;
             Time = time;
             Rating = rating;
         }
     }
-    
 
     public enum _Difficulty
     {
@@ -37,10 +38,10 @@ namespace TourPlanner_Client.Models
 
     public enum _Rating
     {
-        VeryBad,
-        Bad,
-        Mediocre,
+        Great,
         Good,
-        Great
+        Mediocre,
+        Bad,
+        Terrible
     }
 }
