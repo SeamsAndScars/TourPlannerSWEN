@@ -15,6 +15,7 @@ namespace TourPlanner_Client.APIs
     public class MapQuestService
     {
         private readonly string apiKey;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public MapQuestService(string apiKey)
         {
@@ -27,6 +28,7 @@ namespace TourPlanner_Client.APIs
 
             using (HttpClient client = new HttpClient())
             {
+                log.Info("Sending MapQuest API request.");
                 HttpResponseMessage response = await client.GetAsync(directionsUrl);
                 if (response.IsSuccessStatusCode)
                 {
@@ -62,6 +64,7 @@ namespace TourPlanner_Client.APIs
                     {
                         // Handle the error response from the Static Map API
                         string errorMessage = await response.Content.ReadAsStringAsync();
+                        log.Error("Error Code received from the MapQuest API.");
                         // TODO: Handle the error case
                     }
                 }
@@ -69,6 +72,7 @@ namespace TourPlanner_Client.APIs
                 {
                     // Handle the error response from the Directions API
                     string errorMessage = await response.Content.ReadAsStringAsync();
+                    log.Error("Error Code received from the MapQuest API.");
                     // TODO: Handle the error case
                 }
             }

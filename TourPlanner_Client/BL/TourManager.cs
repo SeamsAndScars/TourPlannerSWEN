@@ -17,6 +17,7 @@ namespace TourPlanner_Client.BL
     {
         private readonly TourRepository tourRepository;
         private readonly MapQuestService mapQuestService;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public event EventHandler TourModified;
 
@@ -73,6 +74,7 @@ namespace TourPlanner_Client.BL
             {
                 // Handle the error case
                 // TODO: Handle the error case
+                log.Error("Unexpected Error occured during MapQuest API call.");
                 MessageBox.Show("Error during MapQuest API call");
             }
             OnTourModified();
@@ -81,9 +83,11 @@ namespace TourPlanner_Client.BL
         public async Task AddTourLog(Tour selectedtour, AddTourLogViewModel viewModel)
         {
             if(viewModel is null)
-            {   
+            {
                 // Handle the error case when the tour does not exist
                 // TODO: Handle the error case
+                log.Error("Unexpected issue during TourCreation, due to null ViewModel object.");
+                MessageBox.Show("Unexpected issue during TourCreation.");
                 return;
             }
 
@@ -93,6 +97,8 @@ namespace TourPlanner_Client.BL
             {
                 // Handle the error case when the tour does not exist
                 // TODO: Handle the error case
+                log.Error("Could not find Tour in Database.");
+                MessageBox.Show("Could not find Tour in Database");
                 return;
             }
 
@@ -107,6 +113,8 @@ namespace TourPlanner_Client.BL
             {
                 // Handle the error case when the tour does not exist
                 // TODO: Handle the error case
+                log.Error("Could not find Tour in Database.");
+                MessageBox.Show("Could not find Tour in Database");
                 return;
             }
 
@@ -129,6 +137,8 @@ namespace TourPlanner_Client.BL
                 {
                     // Handle the error case
                     // TODO: Handle the error case
+                    log.Error("Could not find Tour in Database.");
+                    MessageBox.Show("Could not find Tour in Database");
                     return;
                 }
             }

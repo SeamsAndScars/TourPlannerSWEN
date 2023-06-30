@@ -22,13 +22,16 @@ namespace TourPlanner_Client.DAL.Database
             optionsBuilder.UseNpgsql(connectionString);
         }
 
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Configure value conversion for _TransportType enum
             modelBuilder.Entity<Tour>()
-                .Property(t => t.Ttype)
-                .HasConversion<string>();
-
+                .HasMany(t => t.TourLogs)
+                .WithOne()
+                .HasForeignKey(tl => tl.TourId);
+            
+            
             base.OnModelCreating(modelBuilder);
         }
     }

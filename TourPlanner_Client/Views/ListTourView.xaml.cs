@@ -30,7 +30,6 @@
             public ListTourView()
             {
                 InitializeComponent();
-                //navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
             }
             
             private void ListBoxItem_DoubleClick(object sender, MouseButtonEventArgs e)

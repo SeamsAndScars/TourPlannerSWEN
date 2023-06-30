@@ -17,7 +17,7 @@ namespace TourPlanner_Client.Commands
         private AddTourLogViewModel ViewModel { get; set; }
         private Tour selectedtour {get; set;}
         private TourLog tourLog { get; set;}
-
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SubmitTourLogCommand(NavigationStore navigationStore, AddTourLogViewModel viewModel,Tour tour)
         {
@@ -37,6 +37,7 @@ namespace TourPlanner_Client.Commands
             if ( ViewModel.SelectedDate is null)
             {
                 //TODO error handling
+                log.Error("No date selected.");
                 MessageBox.Show("Please select a Date!");
                 return;
             }

@@ -18,16 +18,16 @@ namespace TourPlanner_Client.ViewModels
         private TourLog tourLog;
         private NavigationStore navigationStore;
         private Tour tour;
-        private _Rating _selectedRating;
-        private _Difficulty _selectedDifficulty;
+        private Rating _selectedRating;
+        private Difficulty _selectedDifficulty;
         private string _Comment = string.Empty;
         private string _Time = string.Empty;
         private Tour selectedTour;
         private DateTime? _selectedDate;
         public DateTime NonNullableSelectedDate => SelectedDate ?? DateTime.Today;
 
-        public List<_Difficulty> DifficultyTypes { get; } = Enum.GetValues(typeof(_Difficulty)).Cast<_Difficulty>().ToList();
-        public List<_Rating> RatingTypes { get; } = Enum.GetValues(typeof(_Rating)).Cast<_Rating>().ToList();
+        public List<Difficulty> DifficultyTypes { get; } = Enum.GetValues(typeof(Difficulty)).Cast<Difficulty>().ToList();
+        public List<Rating> RatingTypes { get; } = Enum.GetValues(typeof(Rating)).Cast<Rating>().ToList();
         public CancelTourCommand CancelTourCommand { get; }
         public SubmitTourLogCommand SubmitTourLogCommand { get; }
 
@@ -69,7 +69,7 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        public _Difficulty SelectedDifficulty
+        public Difficulty SelectedDifficulty
         {
             get { return _selectedDifficulty; }
             set
@@ -79,7 +79,7 @@ namespace TourPlanner_Client.ViewModels
             }
         }
         
-        public _Rating SelectedRating
+        public Rating SelectedRating
         {
             get { return _selectedRating; }
             set

@@ -12,11 +12,11 @@ namespace TourPlanner_Client.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public List<TourLog>? TourLogs { get; set; }
+        public List<TourLog> TourLogs { get; set; }
         public string Description { get; set; }
         public string Source { get; set; }
         public string Destination { get; set; }
-        public _TransportType Ttype { get; set; }
+        public TransportType Ttype { get; set; }
         public float Distance { get; set; }
         public int Estimate { get; set; }
         public string ImageFileName { get; set; }
@@ -25,7 +25,7 @@ namespace TourPlanner_Client.Models
         [NotMapped]
         public string NewImage { get; set; }
 
-        public Tour(string Name, string Description, string Source, string Destination, _TransportType ttype)
+        public Tour(string Name, string Description, string Source, string Destination, TransportType ttype)
         {
             Id = Guid.NewGuid();
             this.Name = Name;
@@ -41,7 +41,7 @@ namespace TourPlanner_Client.Models
         }
     }
 
-    public enum _TransportType
+    public enum TransportType
     {
         [Description("Hike")]
         Hike,

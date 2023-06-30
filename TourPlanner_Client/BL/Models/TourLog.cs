@@ -8,15 +8,16 @@ namespace TourPlanner_Client.Models
 {
     public class TourLog
     {
+        public Guid Id { get; set; }
         public DateTime Date { get; set; }
         public string Comment { get; set; }
         public Guid TourId { get; set; }
-        public _Difficulty Difficulty { get; set; }
+        public Difficulty Difficulty { get; set; }
         public TimeOnly Time { get; set; }
-        public _Rating Rating { get; set; }
-        public Guid Id {get; set;}
+        public Rating Rating { get; set; }
+        
 
-        public TourLog(Guid tourId, DateTime date, string comment, _Difficulty difficulty, TimeOnly time, _Rating rating)
+        public TourLog(Guid tourId, DateTime date, string comment, Difficulty difficulty, TimeOnly time, Rating rating)
         {
             Id = Guid.NewGuid();
             TourId = tourId;
@@ -28,7 +29,7 @@ namespace TourPlanner_Client.Models
         }
     }
 
-    public enum _Difficulty
+    public enum Difficulty
     {
         Simple,
         Advanced,
@@ -36,7 +37,7 @@ namespace TourPlanner_Client.Models
         Overkill 
     }
 
-    public enum _Rating
+    public enum Rating
     {
         Great,
         Good,

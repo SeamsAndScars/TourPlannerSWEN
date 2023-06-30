@@ -22,13 +22,13 @@ namespace TourPlanner_Client.ViewModels
         private string _Source = string.Empty;
         private string _Destination = string.Empty;
         private string newTourName;
-        private _TransportType _selectedTransportType;
+        private TransportType _selectedTransportType;
         private ObservableCollection<Tour> tours;
 
         public ICommand AddTourCommand { get; }
         public SubmitTourCommand SubmitTourCommand { get; }
         public CancelTourCommand CancelTourCommand { get; }
-        public IEnumerable<_TransportType> TransportTypes => Enum.GetValues(typeof(_TransportType)).Cast<_TransportType>();
+        public IEnumerable<TransportType> TransportTypes => Enum.GetValues(typeof(TransportType)).Cast<TransportType>();
 
         public string Name
         {
@@ -113,7 +113,7 @@ namespace TourPlanner_Client.ViewModels
         }
 
         //Displays the different Values of the TransportType enumerable
-        public _TransportType SelectedTransportType
+        public TransportType SelectedTransportType
         {
             get { return _selectedTransportType; }
             set

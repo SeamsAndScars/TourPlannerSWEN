@@ -12,8 +12,8 @@ using TourPlanner_Client.DAL.Database;
 namespace TourPlanner_Client.Migrations
 {
     [DbContext(typeof(TourPlannerDbContext))]
-    [Migration("20230621175641_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230630185729_AnotherInitialMigration")]
+    partial class AnotherInitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,22 +57,19 @@ namespace TourPlanner_Client.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Ttype")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Ttype")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.ToTable("Tours");
                 });
 
-            modelBuilder.Entity("TourPlanner_Client.Models.TourLogs", b =>
+            modelBuilder.Entity("TourPlanner_Client.Models.TourLog", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Comment")
                         .IsRequired()
@@ -87,10 +84,10 @@ namespace TourPlanner_Client.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<TimeOnly>("Time")
+                        .HasColumnType("time without time zone");
 
-                    b.Property<Guid?>("TourId")
+                    b.Property<Guid>("TourId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
@@ -100,11 +97,13 @@ namespace TourPlanner_Client.Migrations
                     b.ToTable("TourLogs");
                 });
 
-            modelBuilder.Entity("TourPlanner_Client.Models.TourLogs", b =>
+            modelBuilder.Entity("TourPlanner_Client.Models.TourLog", b =>
                 {
                     b.HasOne("TourPlanner_Client.Models.Tour", null)
                         .WithMany("TourLogs")
-                        .HasForeignKey("TourId");
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TourPlanner_Client.Models.Tour", b =>
