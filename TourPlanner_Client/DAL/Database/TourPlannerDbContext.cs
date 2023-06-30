@@ -30,8 +30,8 @@ namespace TourPlanner_Client.DAL.Database
                 .HasMany(t => t.TourLogs)
                 .WithOne()
                 .HasForeignKey(tl => tl.TourId);
-            
-            
+
+          
             base.OnModelCreating(modelBuilder);
         }
     }

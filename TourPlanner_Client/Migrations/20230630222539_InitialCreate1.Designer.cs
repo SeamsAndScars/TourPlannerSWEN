@@ -12,8 +12,8 @@ using TourPlanner_Client.DAL.Database;
 namespace TourPlanner_Client.Migrations
 {
     [DbContext(typeof(TourPlannerDbContext))]
-    [Migration("20230630185729_AnotherInitialMigration")]
-    partial class AnotherInitialMigration
+    [Migration("20230630222539_InitialCreate1")]
+    partial class InitialCreate1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

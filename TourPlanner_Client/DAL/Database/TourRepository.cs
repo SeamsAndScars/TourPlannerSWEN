@@ -1,18 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using TourPlanner_Client.DAL.Database;
 using TourPlanner_Client.Models;
+using System.Threading.Tasks;
+
+
+
+
 
 internal class TourRepository
 {
     private readonly TourPlannerDbContext dbContext;
-
+ 
     public TourRepository()
     {
         dbContext = new TourPlannerDbContext();
+
     }
 
     // Create a new tour
@@ -54,7 +61,17 @@ internal class TourRepository
 
     public void AddTourLog(TourLog tourLog)
     {
-        dbContext.TourLogs.Add(tourLog);
-        dbContext.SaveChanges();
+       dbContext.TourLogs.Add(tourLog);
+
+        try
+        {
+            tourLog.Date = tourLog.Date.ToUniversalTime();
+            dbContext.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+            //  exception message
+        }
     }
+
 }

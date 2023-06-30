@@ -143,3 +143,21 @@
 2023-06-30 20:07:19,923 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
 2023-06-30 20:59:12,355 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
 2023-06-30 20:59:25,681 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
+2023-06-30 23:09:36,040 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-06-30 23:09:51,872 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
+2023-06-30 23:12:37,482 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
+2023-06-30 23:12:57,804 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
+2023-06-30 23:31:40,102 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-06-30 23:39:36,119 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-06-30 23:39:50,631 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
+2023-06-30 23:51:12,783 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-06-30 23:51:23,285 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
+2023-06-30 23:58:47,716 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-06-30 23:59:01,999 [1] ERROR TourPlanner_Client.Commands.SubmitTourLogCommand - No date selected.
+2023-07-01 00:14:47,498 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-01 00:36:12,245 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-01 00:36:25,128 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
+2023-07-01 00:36:59,895 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-01 00:40:00,404 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-01 00:42:35,072 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-01 00:45:59,924 [1] INFO TourPlanner_Client.App - TourPlanner client has started!

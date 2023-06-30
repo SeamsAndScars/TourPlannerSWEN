@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TourPlanner_Client.Migrations
 {
     /// <inheritdoc />
-    public partial class AnotherInitialMigration : Migration
+    public partial class InitialCreate1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -45,12 +45,6 @@ namespace TourPlanner_Client.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TourLogs", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TourLogs_Tours_TourId",
-                        column: x => x.TourId,
-                        principalTable: "Tours",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
