@@ -42,12 +42,20 @@ namespace TourPlanner_Client.BL
         public List<Tour> GetTours()
         {
             List<Tour> tours = tourRepository.GetTours();
-            foreach (Tour tour in tours)
-            {
-                // Convert distance from miles to kilometers
-                tour.Distance = (float)Math.Round(tour.Distance * 1.60934f, 0);
-            }
             return tours;
+        }
+
+        public List<TourLog> GetTourLogs(Tour tour)
+        {
+            List<TourLog> tourLogs = tourRepository.GetTourLogs(tour.Id);
+
+            foreach (TourLog tourLog in tourLogs)
+            {
+                // Convert UTC time to CET time
+                tourLog.Date = tourLog.Date.ToLocalTime();
+            }
+
+            return tourLogs;
         }
 
         public async Task AddTour(AddTourViewModel tourViewModel)

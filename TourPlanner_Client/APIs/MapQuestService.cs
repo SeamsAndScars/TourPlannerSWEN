@@ -58,7 +58,10 @@ namespace TourPlanner_Client.APIs
 
                         int estimate = seconds;
 
-                        return new RouteInfo(distance, estimate, imageFileName);
+                        //convert to km
+                        float distanceInKilometers = (int)Math.Round(distance * 1.60934, MidpointRounding.AwayFromZero);
+
+                        return new RouteInfo(distanceInKilometers, estimate, imageFileName);
                     }
                     else
                     {

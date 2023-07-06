@@ -217,3 +217,5 @@ C:\Users\jakob\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\obj\Debug\net
 C:\Users\jakob\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\obj\Debug\net6.0-windows\TourPlanner_Client.pdb
 C:\Users\jakob\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\obj\Debug\net6.0-windows\TourPlanner_Client.genruntimeconfig.cache
 C:\Users\jakob\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\obj\Debug\net6.0-windows\ref\TourPlanner_Client.dll
+C:\Users\Jakob\OneDrive\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\obj\Debug\net6.0-windows\Views\AddTourLogView.g.cs
+C:\Users\Jakob\OneDrive\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\obj\Debug\net6.0-windows\Views\AddTourLogView.baml

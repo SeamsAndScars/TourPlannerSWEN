@@ -16,10 +16,21 @@ namespace TourPlanner_Client.ViewModels
         private ObservableCollection<Tour> tours;
         private NavigationStore navigationStore;
         private Tour selectedTour;
+        private List<TourLog> tourLogs;
 
         public AddTourCommand AddTourCommand { get; }
         public EditTourCommand EditTourCommand { get; }
         public AddTourLogCommand AddTourLogCommand { get; }
+
+        public List<TourLog> TourLogs
+        {
+            get { return tourLogs; }
+            set
+            {
+                tourLogs = value;
+                OnPropertyChanged(nameof(TourLogs));
+            }
+        }
 
         public ObservableCollection<Tour> Tours
         {
@@ -47,7 +58,21 @@ namespace TourPlanner_Client.ViewModels
             set
             {
                 selectedTour = value;
+                LoadTourLogs(selectedTour);
                 OnPropertyChanged(nameof(SelectedTour));
+            }
+        }
+
+        private void LoadTourLogs(Tour tour)
+        {
+            if (tour != null)
+            {
+                List<TourLog> logs = tourManager.GetTourLogs(tour);
+                TourLogs = new List<TourLog>(logs);
+            }
+            else
+            {
+                TourLogs = new List<TourLog>();
             }
         }
 
@@ -62,7 +87,7 @@ namespace TourPlanner_Client.ViewModels
 
             AddTourCommand = new AddTourCommand(navigationStore);
             EditTourCommand = new EditTourCommand(navigationStore);
-            AddTourLogCommand = new AddTourLogCommand(this,navigationStore);
+            AddTourLogCommand = new AddTourLogCommand(this,navigationStore, tourManager);
         }
 
         private void LoadTours()

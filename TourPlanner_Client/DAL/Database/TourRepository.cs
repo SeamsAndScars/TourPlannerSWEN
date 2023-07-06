@@ -74,4 +74,8 @@ internal class TourRepository
         }
     }
 
+    public List<TourLog> GetTourLogs(Guid tourId)
+    {
+        return dbContext.TourLogs.Where(tl => tl.TourId == tourId).ToList();
+    }
 }

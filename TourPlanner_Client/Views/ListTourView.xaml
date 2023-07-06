@@ -126,7 +126,23 @@
                     Edit <LineBreak/> TourLog
                 </TextBlock>
             </Button>
-        </Grid>
+                    <ListBox Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" ItemsSource="{Binding SelectedTour.TourLogs}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock>
+                                        <Run FontWeight="Bold" Text="Date: " />
+                                        <Run Text="{Binding Date, StringFormat={}{0:dd.MM.yyyy}}" />
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Run FontWeight="Bold" Text="Comment: " />
+                                        <Run Text="{Binding Comment}" />
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
     </TabItem>
         </TabControl>
 

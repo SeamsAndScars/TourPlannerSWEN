@@ -109,7 +109,7 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        public AddTourLogViewModel(NavigationStore navigationStore, Tour selectedTour)
+        public AddTourLogViewModel(NavigationStore navigationStore, Tour selectedTour, List<TourLog> tourLogs)
         {
             this.navigationStore = navigationStore;
             tour = selectedTour;
