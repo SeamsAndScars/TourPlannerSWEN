@@ -13,6 +13,7 @@ using System.Windows.Input;
 
 namespace TourPlanner_Client.BL
 {
+    //hallo servus
     public class TourManager
     {
         private readonly TourRepository tourRepository;
