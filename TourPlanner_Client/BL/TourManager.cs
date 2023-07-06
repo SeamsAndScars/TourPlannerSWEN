@@ -49,12 +49,12 @@ namespace TourPlanner_Client.BL
         {
             List<TourLog> tourLogs = tourRepository.GetTourLogs(tour.Id);
 
-            foreach (TourLog tourLog in tourLogs)
+            /*foreach (TourLog tourLog in tourLogs)
             {
                 // Convert UTC time to CET time
                 tourLog.Date = tourLog.Date.ToLocalTime();
             }
-
+            */
             return tourLogs;
         }
 
@@ -163,6 +163,34 @@ namespace TourPlanner_Client.BL
 
             OnTourModified();
         }
+
+        public async Task UpdateTourLog(EditTourLogViewModel tourLog)
+        {
+            // Check if the tour log exists in the database
+            TourLog existingTourLog = tourRepository.GetTourLog(tourLog.Id);
+            if (existingTourLog == null)
+            {
+                // Handle the error case when the tour log does not exist
+                // TODO: Handle the error case
+                log.Error("Could not find TourLog in Database.");
+                MessageBox.Show("Could not find TourLog in Database");
+                return;
+            }
+
+            // Update the properties of the tour log
+            existingTourLog.Date = DateTime.SpecifyKind(tourLog.SelectedDate, DateTimeKind.Utc);
+            existingTourLog.Comment = tourLog.Comment;
+            existingTourLog.Difficulty = tourLog.SelectedDifficulty;
+            existingTourLog.Time = tourLog.Time;
+            existingTourLog.Rating = tourLog.SelectedRating;
+
+            // Update the tour log in the repository
+            tourRepository.UpdateTourLog(existingTourLog);
+
+            // Trigger the event to notify that a tour log has been modified
+            OnTourModified();
+        }
+
 
         protected virtual void OnTourModified()
         {    

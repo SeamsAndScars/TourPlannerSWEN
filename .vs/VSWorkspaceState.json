@@ -6,11 +6,12 @@
     "\\TourPlanner_Client\\BL\\Models",
     "\\TourPlanner_Client\\Commands",
     "\\TourPlanner_Client\\DAL",
+    "\\TourPlanner_Client\\DAL\\Database",
     "\\TourPlanner_Client\\Migrations",
     "\\TourPlanner_Client\\Properties",
     "\\TourPlanner_Client\\ViewModels",
     "\\TourPlanner_Client\\Views"
   ],
-  "SelectedNode": "\\TourPlanner_Client\\Migrations",
+  "SelectedNode": "\\TourPlanner_Client\\ViewModels\\EditTourLogViewModel.cs",
   "PreviewInSolutionExplorer": false
 }

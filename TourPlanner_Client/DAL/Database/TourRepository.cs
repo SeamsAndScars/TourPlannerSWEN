@@ -35,6 +35,14 @@ internal class TourRepository
         return dbContext.Tours.Find(tourId);
     }
 
+    //Get TourLogs
+
+    public TourLog GetTourLog(Guid tourId)
+    {
+        return dbContext.TourLogs.Find(tourId);
+    }
+
+
     // Get all tours
     public List<Tour> GetTours()
     {
@@ -44,8 +52,27 @@ internal class TourRepository
     // Update a tour (modify)
     public void UpdateTour(Tour tour)
     {
-        dbContext.Tours.Update(tour);
+        
+            dbContext.Tours.Update(tour);
+            dbContext.SaveChanges();
+       
+        
+    }
+
+    // Update a tourlog
+
+    public void UpdateTourLog(TourLog tourLog)
+    {
+        
+        try
+        {
+        dbContext.TourLogs.Update(tourLog);
         dbContext.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+            //yo
+        }
     }
 
     // Delete a tour

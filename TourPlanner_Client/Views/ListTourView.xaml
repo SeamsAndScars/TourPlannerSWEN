@@ -127,12 +127,11 @@
                         </TextBlock>
                     </Button>
                     <Button Grid.Row="1" Grid.Column="1"  Command="{Binding EditTourLogCommand}" >
-                        
-                <TextBlock TextWrapping ="Wrap" TextAlignment="Center">
+                        <TextBlock TextWrapping ="Wrap" TextAlignment="Center">
                     Edit <LineBreak/> TourLog
                 </TextBlock>
             </Button>
-                    <ListBox Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" ItemsSource="{Binding SelectedTour.TourLogs}">
+                    <ListBox Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" ItemsSource="{Binding SelectedTour.TourLogs}" SelectedItem="{Binding SelectedTourLog}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
