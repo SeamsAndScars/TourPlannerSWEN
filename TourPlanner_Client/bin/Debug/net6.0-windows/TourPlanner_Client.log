@@ -199,3 +199,5 @@
 2023-07-06 16:10:54,923 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
 2023-07-06 16:11:35,006 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
 2023-07-06 16:11:54,915 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
+2023-07-06 16:40:13,889 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-06 16:44:52,029 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
