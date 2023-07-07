@@ -23,6 +23,7 @@ namespace TourPlanner_Client.ViewModels
         public EditTourCommand EditTourCommand { get; }
         public AddTourLogCommand AddTourLogCommand { get; }
         private EditTourLogCommand editTourLogCommand;
+        public GenerateTourLogReportCommand GenerateTourLogReport { get; }
 
         public List<TourLog> TourLogs
         {
@@ -124,6 +125,7 @@ namespace TourPlanner_Client.ViewModels
             AddTourLogCommand = new AddTourLogCommand(this, navigationStore, tourManager);
 
             InitializeEditTourLogCommand();
+            GenerateTourLogReport = new GenerateTourLogReportCommand(this, tourManager);
         }
 
         private void LoadTours()

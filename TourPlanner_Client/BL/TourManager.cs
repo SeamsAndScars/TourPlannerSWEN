@@ -199,4 +199,3 @@ namespace TourPlanner_Client.BL
     }
 }
 
-//Ende GitTest -- ToBeDeleted
