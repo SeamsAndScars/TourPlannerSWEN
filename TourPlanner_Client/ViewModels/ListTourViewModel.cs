@@ -17,10 +17,12 @@ namespace TourPlanner_Client.ViewModels
         private NavigationStore navigationStore;
         private Tour selectedTour;
         private List<TourLog> tourLogs;
+        private TourLog selectedTourLog;
 
         public AddTourCommand AddTourCommand { get; }
         public EditTourCommand EditTourCommand { get; }
         public AddTourLogCommand AddTourLogCommand { get; }
+        private EditTourLogCommand editTourLogCommand;
         public GenerateTourLogReportCommand GenerateTourLogReport { get; }
 
         public List<TourLog> TourLogs
@@ -30,26 +32,6 @@ namespace TourPlanner_Client.ViewModels
             {
                 tourLogs = value;
                 OnPropertyChanged(nameof(TourLogs));
-            }
-        }
-
-        public ObservableCollection<Tour> Tours
-        {
-            get { return tours; }
-            set
-            {
-                tours = value;
-                OnPropertyChanged(nameof(Tours));
-            }
-        }
-
-        public NavigationStore NavigationStore
-        {
-            get { return navigationStore; }
-            set
-            {
-                navigationStore = value;
-                OnPropertyChanged(nameof(NavigationStore));
             }
         }
 
@@ -77,6 +59,58 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
+        public TourLog SelectedTourLog
+        {
+            get { return selectedTourLog; }
+            set
+            {
+                selectedTourLog = value;
+                OnPropertyChanged(nameof(SelectedTourLog));
+                InitializeEditTourLogCommand();
+            }
+        }
+
+        public ObservableCollection<Tour> Tours
+        {
+            get { return tours; }
+            set
+            {
+                tours = value;
+                OnPropertyChanged(nameof(Tours));
+            }
+        }
+
+        public NavigationStore NavigationStore
+        {
+            get { return navigationStore; }
+            set
+            {
+                navigationStore = value;
+                OnPropertyChanged(nameof(NavigationStore));
+            }
+        }
+
+        public EditTourLogCommand EditTourLogCommand
+        {
+            get { return editTourLogCommand; }
+            set
+            {
+                editTourLogCommand = value;
+                OnPropertyChanged(nameof(EditTourLogCommand));
+            }
+        }
+
+        private void InitializeEditTourLogCommand()
+        {
+            if (SelectedTour != null && SelectedTourLog != null)
+            {
+                EditTourLogCommand = new EditTourLogCommand(navigationStore, SelectedTourLog);
+            }
+            else
+            {
+                EditTourLogCommand = null;
+            }
+        }
 
         public ListTourViewModel(NavigationStore navigationStore)
         {
@@ -88,7 +122,9 @@ namespace TourPlanner_Client.ViewModels
 
             AddTourCommand = new AddTourCommand(navigationStore);
             EditTourCommand = new EditTourCommand(navigationStore);
-            AddTourLogCommand = new AddTourLogCommand(this,navigationStore, tourManager);
+            AddTourLogCommand = new AddTourLogCommand(this, navigationStore, tourManager);
+
+            InitializeEditTourLogCommand();
             GenerateTourLogReport = new GenerateTourLogReportCommand(this, tourManager);
         }
 
@@ -102,6 +138,5 @@ namespace TourPlanner_Client.ViewModels
         {
             LoadTours();
         }
-
     }
 }

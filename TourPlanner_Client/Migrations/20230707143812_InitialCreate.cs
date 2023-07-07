@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TourPlanner_Client.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate1 : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -39,12 +39,18 @@ namespace TourPlanner_Client.Migrations
                     Comment = table.Column<string>(type: "text", nullable: false),
                     TourId = table.Column<Guid>(type: "uuid", nullable: false),
                     Difficulty = table.Column<int>(type: "integer", nullable: false),
-                    Time = table.Column<TimeOnly>(type: "time without time zone", nullable: false),
+                    Time = table.Column<string>(type: "text", nullable: false),
                     Rating = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TourLogs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TourLogs_Tours_TourId",
+                        column: x => x.TourId,
+                        principalTable: "Tours",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

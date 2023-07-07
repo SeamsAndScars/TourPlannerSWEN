@@ -13,11 +13,11 @@ namespace TourPlanner_Client.Models
         public string Comment { get; set; }
         public Guid TourId { get; set; }
         public Difficulty Difficulty { get; set; }
-        public TimeOnly Time { get; set; }
+        public string Time { get; set; }
         public Rating Rating { get; set; }
         
 
-        public TourLog(Guid tourId, DateTime date, string comment, Difficulty difficulty, TimeOnly time, Rating rating)
+        public TourLog(Guid tourId, DateTime date, string comment, Difficulty difficulty, string time, Rating rating)
         {
             Id = Guid.NewGuid();
             TourId = tourId;

@@ -81,8 +81,9 @@ namespace TourPlanner_Client.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("integer");
 
-                    b.Property<TimeOnly>("Time")
-                        .HasColumnType("time without time zone");
+                    b.Property<string>("Time")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<Guid>("TourId")
                         .HasColumnType("uuid");

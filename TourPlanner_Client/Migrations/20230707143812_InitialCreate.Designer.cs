@@ -12,8 +12,8 @@ using TourPlanner_Client.DAL.Database;
 namespace TourPlanner_Client.Migrations
 {
     [DbContext(typeof(TourPlannerDbContext))]
-    [Migration("20230630222539_InitialCreate1")]
-    partial class InitialCreate1
+    [Migration("20230707143812_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,8 +84,9 @@ namespace TourPlanner_Client.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("integer");
 
-                    b.Property<TimeOnly>("Time")
-                        .HasColumnType("time without time zone");
+                    b.Property<string>("Time")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<Guid>("TourId")
                         .HasColumnType("uuid");
