@@ -110,7 +110,7 @@ namespace TourPlanner_Client.BL
                 return;
             }
 
-            TourLog tourLog = new TourLog(existingTour.Id, viewModel.NonNullableSelectedDate, viewModel.Comment, viewModel.SelectedDifficulty, TimeOnly.MaxValue, viewModel.SelectedRating);
+            TourLog tourLog = new TourLog(existingTour.Id, viewModel.NonNullableSelectedDate, viewModel.Comment, viewModel.SelectedDifficulty, viewModel.Time, viewModel.SelectedRating);
             tourRepository.AddTourLog(tourLog);
         }
 

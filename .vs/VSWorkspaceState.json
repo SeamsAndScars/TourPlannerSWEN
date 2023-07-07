@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\TourPlanner_Client",
-    "\\TourPlanner_Client\\BL",
-    "\\TourPlanner_Client\\BL\\Models",
     "\\TourPlanner_Client\\Commands",
+    "\\TourPlanner_Client\\Converters",
     "\\TourPlanner_Client\\DAL",
     "\\TourPlanner_Client\\DAL\\Database",
     "\\TourPlanner_Client\\Migrations",
@@ -12,6 +11,6 @@
     "\\TourPlanner_Client\\ViewModels",
     "\\TourPlanner_Client\\Views"
   ],
-  "SelectedNode": "\\TourPlanner_Client\\ViewModels\\EditTourLogViewModel.cs",
+  "SelectedNode": "\\TourPlanner_Client\\Views\\AddTourLogView.xaml",
   "PreviewInSolutionExplorer": false
 }

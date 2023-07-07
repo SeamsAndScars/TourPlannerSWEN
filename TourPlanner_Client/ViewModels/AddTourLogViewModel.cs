@@ -9,6 +9,8 @@ using TourPlanner_Client.BL;
 using TourPlanner_Client.Commands;
 using TourPlanner_Client.Models;
 using TourPlanner_Client.Stores;
+using TourPlanner_Client.Validation;
+
 
 namespace TourPlanner_Client.ViewModels
 {
@@ -31,6 +33,9 @@ namespace TourPlanner_Client.ViewModels
         public CancelTourCommand CancelTourCommand { get; }
         public SubmitTourLogCommand SubmitTourLogCommand { get; }
 
+        private ValidateTotalTime validateTotalTime;
+
+
         public string Comment
         {
             get
@@ -45,19 +50,22 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
+
         public string Time
         {
-            get
-            {
-                return _Time;
-            }
+            get { return _Time; }
             set
             {
                 if (value == null) { return; }
-                _Time = value;
-                OnPropertyChanged(nameof(Time));
+
+                if (validateTotalTime.ValidateTime(value))
+                {
+                    _Time = value;
+                    OnPropertyChanged(nameof(Time));
+                }
             }
         }
+
 
         public DateTime? SelectedDate
         {
@@ -115,7 +123,7 @@ namespace TourPlanner_Client.ViewModels
             tour = selectedTour;
             CancelTourCommand = new CancelTourCommand(navigationStore);
             SubmitTourLogCommand = new SubmitTourLogCommand(navigationStore, this, tour);
-
+            validateTotalTime = new ValidateTotalTime();
             //MessageBox.Show("Comment:" + Comment + "\nDifficulty:" + _selectedDifficulty.ToString() + "\nSelected Date:" + SelectedDate.ToString() + "\nType of Date:" + SelectedDate.GetType().ToString());
             //tourLog = new TourLog(tour.Id, DateOnly.MaxValue, Comment, _selectedDifficulty, TimeOnly.MaxValue, _selectedRating);
         }

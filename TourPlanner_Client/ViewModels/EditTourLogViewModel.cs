@@ -6,6 +6,7 @@ using TourPlanner_Client.BL;
 using TourPlanner_Client.Commands;
 using TourPlanner_Client.Models;
 using TourPlanner_Client.Stores;
+using TourPlanner_Client.Validation;
 
 namespace TourPlanner_Client.ViewModels
 {
@@ -17,9 +18,10 @@ namespace TourPlanner_Client.ViewModels
         private DateTime selectedDate;
         private string comment;
         private Difficulty selectedDifficulty;
-        private TimeOnly time;
+        private string time;
         private Rating selectedRating;
-
+        public CancelTourCommand CancelTourCommand { get; }
+        private ValidateTotalTime validateTotalTime;
         public List<Difficulty> DifficultyTypes { get; } = Enum.GetValues(typeof(Difficulty)).Cast<Difficulty>().ToList();
         public List<Rating> RatingTypes { get; } = Enum.GetValues(typeof(Rating)).Cast<Rating>().ToList();
 
@@ -63,13 +65,19 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        public TimeOnly Time
+        public string Time
         {
             get { return time; }
             set
             {
-                time = value;
-                OnPropertyChanged(nameof(Time));
+                if (value == null) { return; }
+
+                var validateTotalTime = new ValidateTotalTime();
+                if (validateTotalTime.ValidateTime(value))
+                {
+                    time = value;
+                    OnPropertyChanged(nameof(Time));
+                }
             }
         }
 
@@ -97,8 +105,9 @@ namespace TourPlanner_Client.ViewModels
             SelectedDifficulty = tourLog.Difficulty;
             Time = tourLog.Time;
             SelectedRating = tourLog.Rating;
-
+            CancelTourCommand = new CancelTourCommand(navigationStore);
             SubmitChangeCommand = new SubmitChangeCommand(this, navigationStore);
+            validateTotalTime = new ValidateTotalTime();
         }
     }
 }
