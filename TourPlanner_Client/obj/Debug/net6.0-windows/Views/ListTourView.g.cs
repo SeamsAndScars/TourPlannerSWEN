@@ -102,7 +102,7 @@ namespace TourPlanner_Client.Views {
             eventSetter = new System.Windows.EventSetter();
             eventSetter.Event = System.Windows.Controls.Control.PreviewMouseDoubleClickEvent;
             
-            #line 154 "..\..\..\..\Views\ListTourView.xaml"
+            #line 159 "..\..\..\..\Views\ListTourView.xaml"
             eventSetter.Handler = new System.Windows.Input.MouseButtonEventHandler(this.ListBoxItem_DoubleClick);
             
             #line default
