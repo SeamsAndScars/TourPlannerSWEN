@@ -55,8 +55,6 @@ internal class TourRepository
         
             dbContext.Tours.Update(tour);
             dbContext.SaveChanges();
-       
-        
     }
 
     // Update a tourlog

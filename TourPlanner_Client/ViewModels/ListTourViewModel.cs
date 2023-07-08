@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using TourPlanner_Client.Commands;
 using TourPlanner_Client.Models;
 using TourPlanner_Client.Stores;
 using TourPlanner_Client.BL;
-using System.Windows.Data;
 using System;
-using System.Windows;
-using TourPlanner_Client.Converters;
 
 namespace TourPlanner_Client.ViewModels
 {
@@ -19,6 +17,18 @@ namespace TourPlanner_Client.ViewModels
         private Tour selectedTour;
         private List<TourLog> tourLogs;
         private TourLog selectedTourLog;
+        private string searchQuery;
+
+        public string SearchQuery
+        {
+            get { return searchQuery; }
+            set
+            {
+                searchQuery = value;
+                FilterTours();
+                OnPropertyChanged(nameof(SearchQuery));
+            }
+        }
 
         public int Popularity { get; set; }
         public int ChildFriendliness { get; set; }
@@ -75,8 +85,6 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        
-
         public NavigationStore NavigationStore
         {
             get { return navigationStore; }
@@ -117,6 +125,7 @@ namespace TourPlanner_Client.ViewModels
         {
             List<Tour> tourList = tourManager.GetTours();
             Tours = new ObservableCollection<Tour>(tourList);
+            FilterTours();
         }
 
         private void LoadTourLogs(Tour tour)
@@ -156,7 +165,7 @@ namespace TourPlanner_Client.ViewModels
                 ChildFriendliness = CalculateChildFriendliness();
 
                 // Update the child-friendliness string representation
-                ChildFriendlinessLabel = ChildFriendlinessConverter.ConvertToString(ChildFriendliness);
+                ChildFriendlinessLabel = ChildFriendlinessConverter.ConvertToString(ChildFriendliness); // Assuming ChildFriendliness is an integer
             }
             else
             {
@@ -195,13 +204,27 @@ namespace TourPlanner_Client.ViewModels
             double selectedTourDistance = SelectedTour.Distance;
 
             // Calculate the child-friendliness based on the average difficulty, selected tour time, and distance
-            double childFriendliness = (averageDifficulty * 3 + selectedTourTimeInHours * 2 + selectedTourDistance / 4 );
+            double childFriendliness = (averageDifficulty * 3 + selectedTourTimeInHours * 2 + selectedTourDistance / 4);
 
-            
+
             return (int)(childFriendliness);
         }
 
-
+        private void FilterTours()
+        {
+            if (string.IsNullOrWhiteSpace(SearchQuery))
+            {
+                // Show all tours when the search query is empty
+                Tours = new ObservableCollection<Tour>(tourManager.GetTours());
+            }
+            else
+            {
+                // Filter tours based on the search query
+                Tours = new ObservableCollection<Tour>(
+                    tourManager.GetTours().Where(tour => tour.Name.ToLower().Contains(SearchQuery.ToLower()))
+                );
+            }
+        }
 
         private void TourManager_TourModified(object sender, EventArgs e)
         {

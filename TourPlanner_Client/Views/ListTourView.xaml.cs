@@ -44,7 +44,9 @@
             }
 
 
-            private void OnCurrentViewModelChanged()
+        
+
+        private void OnCurrentViewModelChanged()
             {
                 ViewModelBase currentViewModel = navigationStore.CurrentViewModel;
 
