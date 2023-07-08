@@ -43,13 +43,11 @@ namespace TourPlanner_Client.Models
 
     public enum TransportType
     {
-        [Description("Hike")]
+        [Description("pedestrian")]
         Hike,
-        [Description("Run")]
-        Run,
-        [Description("Bike")]
-        Bike,
-        [Description("Vacation")]
-        Vacation
+        [Description("fastest")]
+        Car,
+        [Description("bicycle")]
+        Bike
     }
 }

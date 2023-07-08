@@ -78,7 +78,7 @@
                     <Bold>
                         <Run FontWeight="Bold">Popularity: </Run>
                     </Bold>
-                    <Run Text="{Binding SelectedTour.Source}" />
+                    <Run Text="{Binding Popularity}" />
                 </TextBlock>
             </ListBoxItem>
             <ListBoxItem IsEnabled="False" FontSize="12">
@@ -86,7 +86,7 @@
                         <Bold>
                             <Run FontWeight="Bold">Child-friendliness: </Run>
                         </Bold>
-                        <Run Text="{Binding SelectedTour.Distance}" />
+                        <Run Text="{Binding ChildFriendlinessLabel}" />
                 </TextBlock>
             </ListBoxItem>
         </ListBox>

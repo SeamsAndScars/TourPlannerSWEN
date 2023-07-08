@@ -10,8 +10,9 @@ namespace TourPlanner_Client.Converters
         {
             if (value is int seconds)
             {
-                TimeSpan timeSpan = TimeSpan.FromSeconds(seconds);
-                return timeSpan.ToString(@"hh\:mm\:ss");
+                int hours = seconds / 3600;
+                int minutes = (seconds % 3600) / 60;
+                return string.Format("{0:00}:{1:00}", hours, minutes);
             }
 
             return string.Empty;

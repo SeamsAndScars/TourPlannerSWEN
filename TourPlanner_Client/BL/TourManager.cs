@@ -68,7 +68,7 @@ namespace TourPlanner_Client.BL
                 tourViewModel.SelectedTransportType
             );
 
-            RouteInfo routeInfo = await mapQuestService.GetRouteInfo(tourViewModel.Source, tourViewModel.Destination);
+            RouteInfo routeInfo = await mapQuestService.GetRouteInfo(tourViewModel.Source, tourViewModel.Destination, tourViewModel.SelectedTransportType);
             if (routeInfo != null)
             {
                 // Set the properties of the new tour
@@ -130,7 +130,7 @@ namespace TourPlanner_Client.BL
             {
                 // The source or destination has changed, generate a new picture, distance, and estimate
 
-                RouteInfo routeInfo = await mapQuestService.GetRouteInfo(tourViewModel.Source, tourViewModel.Destination);
+                RouteInfo routeInfo = await mapQuestService.GetRouteInfo(tourViewModel.Source, tourViewModel.Destination, tourViewModel.SelectedTransportType);
                 if (routeInfo != null)
                 {
                     // Set the properties of the updated tour
@@ -190,6 +190,23 @@ namespace TourPlanner_Client.BL
             // Trigger the event to notify that a tour log has been modified
             OnTourModified();
         }
+
+        public void DeleteTour(EditTourViewModel tourViewModel)
+        {
+            Tour existingTour = tourRepository.GetTour(tourViewModel.Id);
+            if (existingTour == null)
+            {
+                log.Error("Could not find Tour in Database.");
+                MessageBox.Show("Could not find Tour in Database");
+                return;
+            }
+
+            // Delete the tour from the repository
+            tourRepository.DeleteTour(existingTour.Id);
+
+            OnTourModified();
+        }
+
 
 
         protected virtual void OnTourModified()

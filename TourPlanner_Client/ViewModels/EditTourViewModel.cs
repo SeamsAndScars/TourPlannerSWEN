@@ -19,7 +19,7 @@ namespace TourPlanner_Client.ViewModels
         public Guid Id { get; set; }
         public List<TransportType> TransportTypes { get; } = Enum.GetValues(typeof(TransportType)).Cast<TransportType>().ToList();
         public ICommand SubmitChangeCommand => new SubmitChangeCommand(this, _navigationStore);
-        public ICommand DeleteTourCommand { get; }
+        public ICommand DeleteTourCommand => new DeleteTourCommand(this, _navigationStore);
         public ICommand EditTourCommand { get; }
         public CancelTourCommand CancelTourCommand { get; }
 
@@ -81,7 +81,6 @@ namespace TourPlanner_Client.ViewModels
             Id = selectedTour.Id;
             SelectedTransportType = tour.Ttype;
             //SubmitChangeCommand = new SubmitChangeCommand(this);
-            DeleteTourCommand = new DeleteTourCommand(this);
             CancelTourCommand = new CancelTourCommand(navigationStore);
         }
 
