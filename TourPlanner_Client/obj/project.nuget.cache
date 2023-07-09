@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "VlU2y4l4/7G5rcasrzlRSOkPnjDGZHE2yXNDDjzWO4tLaaz3+nCfYHEWK4saeMfdzec/VKwylM9EBdRYCkwU5g==",
+=======
+  "dgSpecHash": "r/v33Tz4Ep+oU9a3fU0ODY03WHGbkIRoGnUfHPLODhoQGX5dP3+aDhuJYEX4isdK8IqSjbBCcce9C73oPkmqPA==",
+>>>>>>> Reports
   "success": true,
   "projectFilePath": "C:\\Users\\assch\\OneDrive\\Dokumente\\GitHub\\TourPlannerSWEN\\TourPlanner_Client\\TourPlanner_Client.csproj",
   "expectedPackageFiles": [

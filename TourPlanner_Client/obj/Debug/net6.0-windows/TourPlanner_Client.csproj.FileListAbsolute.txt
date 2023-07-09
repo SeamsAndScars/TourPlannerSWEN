@@ -1,4 +1,4 @@
-C:\Users\assch\OneDrive\Dokumente\FH\swen2\TourPlanner_Client\bin\Debug\net6.0-windows\TourPlanner_Client.exe
+    C:\Users\assch\OneDrive\Dokumente\FH\swen2\TourPlanner_Client\bin\Debug\net6.0-windows\TourPlanner_Client.exe
 C:\Users\assch\OneDrive\Dokumente\FH\swen2\TourPlanner_Client\bin\Debug\net6.0-windows\TourPlanner_Client.deps.json
 C:\Users\assch\OneDrive\Dokumente\FH\swen2\TourPlanner_Client\bin\Debug\net6.0-windows\TourPlanner_Client.runtimeconfig.json
 C:\Users\assch\OneDrive\Dokumente\FH\swen2\TourPlanner_Client\bin\Debug\net6.0-windows\TourPlanner_Client.dll
@@ -274,3 +274,5 @@ C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\
 C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\Debug\net6.0-windows\ru\Xceed.Wpf.AvalonDock.NET5.resources.dll
 C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\Debug\net6.0-windows\sv\Xceed.Wpf.AvalonDock.NET5.resources.dll
 C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\Debug\net6.0-windows\zh-Hans\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\obj\Debug\net6.0-windows\Views\EditTourLogView.g.cs
+C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\obj\Debug\net6.0-windows\Views\EditTourLogView.baml

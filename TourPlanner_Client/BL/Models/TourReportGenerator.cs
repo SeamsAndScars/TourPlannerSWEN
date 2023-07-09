@@ -90,5 +90,66 @@ namespace TourPlanner_Client.BL.Models
                 MessageBox.Show($"An error occurred while generating the report: {ex.Message}");
             }
         }
+
+        public static void GenerateSummaryReport(TourManager tourManager)
+        {
+
+            //GET TOUR DATA 
+
+            List<Tour> tours = tourManager.GetTours();
+
+            string outputPath = $"SummaryTourReport_{DateTime.Now.Date.ToString("yyyyMMdd")}.pdf";
+            try
+            {
+
+                // Create a new PDF document
+                using (PdfWriter writer = new PdfWriter(outputPath))
+                using (PdfDocument pdfDoc = new PdfDocument(writer))
+                using (Document document = new Document(pdfDoc))
+                {
+                    // Add the tour information to the document
+                    document.Add(new Paragraph("Tour Report").SetBold().SetFontSize(18).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
+                    float avgtime, avgdistance, avgrating;
+
+                    foreach (Tour tour in tours)
+                    {
+                        tour.TourLogs = tourManager.GetTourLogs(tour);
+                        avgtime = 0;
+                        avgrating = 0;
+
+                        document.Add(new Paragraph().Add(new Text("Name: ").SetBold()).Add(tour.Name));
+                        document.Add(new Paragraph().Add(new Text("Description: ").SetBold()).Add(tour.Description));
+                        document.Add(new Paragraph().Add(new Text("Source: ").SetBold()).Add(tour.Source));
+                        document.Add(new Paragraph().Add(new Text("Destination: ").SetBold()).Add(tour.Destination));
+
+                        foreach (TourLog tl in tour.TourLogs)
+                        {
+                            //Parse Time from TourLog as it is stored as a string
+                            string[] timeComponents = tl.Time.Split(':');
+                            int hours = int.Parse(timeComponents[0]);
+                            int minutes = int.Parse(timeComponents[1]);
+
+                            avgtime += hours * 60 + minutes;
+                            avgrating += Enum.GetValues(typeof(Rating)).Cast<int>().Max()+1 - (float)tl.Rating;        //+1 is used to avoid a Division by 0 in case a TourLog has the worst Rating and only one entry.
+                        }
+                        avgtime = avgtime / tour.TourLogs.Count;
+                        avgrating = avgrating / tour.TourLogs.Count;
+                        
+                        document.Add(new Paragraph().Add(new Text("Average time in minutes: ").SetBold()).Add(avgtime.ToString()));
+                        document.Add(new Paragraph().Add(new Text("Average rating out of 5: ").SetBold()).Add(avgrating.ToString()));
+                        document.Add(new Paragraph().Add("5 is great and 1 is terrible").SetFontSize(8));
+                        document.Add(new Paragraph(" "));
+                        document.Add(new Paragraph(" "));
+                    }
+                }
+
+                MessageBox.Show($"Report generated successfully.");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while generating the report: {ex.Message}");
+            }
+        }
     }
 }
