@@ -176,9 +176,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
         
-        <!-- Searchbar -->
-        
-        <xctk:WatermarkTextBox Grid.Row ="4" Watermark="Search" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" Width="Auto" BorderThickness="0" Background="#F1F1F1" Foreground="#333333" Padding="8,4,8,4" FontSize="12" FontFamily="Segoe UI" VerticalAlignment="Center" Height="30"/>
+        <!-- Searchbar --> 
+        <xctk:WatermarkTextBox Grid.Row ="5" Watermark="Search" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" Width="Auto" BorderThickness="0" Background="#F1F1F1" Foreground="#333333" Padding="8,4,8,4" FontSize="12" FontFamily="Segoe UI" VerticalAlignment="Center" Height="30"/>
 
         <!-- Details -->
         <ListBox Grid.Column="1" Grid.Row="2" Grid.RowSpan="4" BorderThickness="0" >
