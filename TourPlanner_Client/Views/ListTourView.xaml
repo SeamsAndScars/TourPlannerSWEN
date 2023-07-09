@@ -4,14 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TourPlanner_Client.Views"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              xmlns:converters="clr-namespace:TourPlanner_Client.Converters"
              xmlns:viewmodels="clr-namespace:TourPlanner_Client.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:ListTourViewModel}"
+             
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <converters:SecondsToTimeConverter x:Key="SecondsToTimeConverter" />
         <converters:ImagePathConverter x:Key="ImagePathConverter" />
+        <ImageBrush x:Key="watermark" ImageSource="Search_test.png" AlignmentX="Left" Stretch="None" />
         <Style TargetType="TabControl">
             <Setter Property="Template">
                 <Setter.Value>
@@ -57,7 +60,7 @@
                     <Run Text="{Binding SelectedTour.Description}" />
         </TextBlock>
 
-        <!-- Description -->
+        <!-- Attributes -->
         <ListBox Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" BorderThickness="0" >
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
@@ -173,23 +176,8 @@
         </ListBox>
         
         <!-- Searchbar -->
-        <TextBox Grid.Row="4" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" Width="Auto" BorderThickness="0" Background="#F1F1F1" Foreground="#333333" Padding="8,4,8,4" FontSize="12" FontFamily="Segoe UI" VerticalAlignment="Center" Height="30">
-            <TextBox.Style>
-                <Style TargetType="TextBox">
-                    <Setter Property="Foreground" Value="#999999" />
-                    <Setter Property="Text" Value="Search in stored tours" />
-                    <Style.Triggers>
-                        <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="Foreground" Value="#333333" />
-                            <Setter Property="FontStyle" Value="Normal" />
-                            <Setter Property="Text" Value="Search" />
-                           
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBox.Style>
-        </TextBox>
-
+        
+        <xctk:WatermarkTextBox Grid.Row ="4" Watermark="Search" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" Width="Auto" BorderThickness="0" Background="#F1F1F1" Foreground="#333333" Padding="8,4,8,4" FontSize="12" FontFamily="Segoe UI" VerticalAlignment="Center" Height="30"/>
 
         <!-- Details -->
         <ListBox Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" BorderThickness="0" >

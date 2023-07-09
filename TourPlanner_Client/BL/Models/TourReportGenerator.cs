@@ -60,7 +60,6 @@ namespace TourPlanner_Client.BL.Models
                     Table table = new Table(5);
 
                     // Add table headers
-
                     
                     table.AddHeaderCell(new Cell().Add(new Paragraph("Date").SetBold()));
                     table.AddHeaderCell(new Cell().Add(new Paragraph("Difficulty").SetBold()));

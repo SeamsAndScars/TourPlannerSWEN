@@ -6,6 +6,7 @@ using TourPlanner_Client.Models;
 using TourPlanner_Client.Stores;
 using TourPlanner_Client.BL;
 using System;
+using System.Windows.Media;
 
 namespace TourPlanner_Client.ViewModels
 {
@@ -156,7 +157,7 @@ namespace TourPlanner_Client.ViewModels
 
         private void CalculateAttributes()
         {
-            if (TourLogs != null)
+            if (TourLogs.Count != 0)
             {
                 // Calculate popularity based on the number of logs
                 Popularity = TourLogs.Count;
@@ -192,19 +193,18 @@ namespace TourPlanner_Client.ViewModels
             }
 
 
-
             // Calculate the average difficulty
             if (TourLogs.Count > 0)
             {
                 averageDifficulty = totalDifficulty / TourLogs.Count;
             }
 
-            // Get the selected tour's time in hours and distance
             double selectedTourTimeInHours = SelectedTour.Estimate / 3600;
             double selectedTourDistance = SelectedTour.Distance;
-
-            // Calculate the child-friendliness based on the average difficulty, selected tour time, and distance
             double childFriendliness = (averageDifficulty * 3 + selectedTourTimeInHours * 2 + selectedTourDistance / 4);
+            
+            // Calculate the child-friendliness based on the average difficulty, selected tour time, and distance
+            
 
 
             return (int)(childFriendliness);
@@ -216,6 +216,7 @@ namespace TourPlanner_Client.ViewModels
             {
                 // Show all tours when the search query is empty
                 Tours = new ObservableCollection<Tour>(tourManager.GetTours());
+                //Searchbox.Background = (ImageBrush)FindResource("watermark");
             }
             else
             {

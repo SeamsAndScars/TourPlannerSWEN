@@ -40,11 +40,8 @@
                     navigationStore = ((ListTourViewModel)DataContext).NavigationStore;
                     navigationStore.CurrentViewModel = new EditTourViewModel(navigationStore, selectedTour);
                
+                }
             }
-            }
-
-
-        
 
         private void OnCurrentViewModelChanged()
             {
