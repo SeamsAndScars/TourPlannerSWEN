@@ -238,3 +238,5 @@ C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\
 C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\Debug\net6.0-windows\bcpkix-fips-1.0.2.dll
 C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\Debug\net6.0-windows\itext.bouncy-castle-fips-adapter.dll
 C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
+C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\obj\Debug\net6.0-windows\Views\EditTourLogView.g.cs
+C:\Users\assch\OneDrive\Dokumente\GitHub\TourPlannerSWEN\TourPlanner_Client\obj\Debug\net6.0-windows\Views\EditTourLogView.baml

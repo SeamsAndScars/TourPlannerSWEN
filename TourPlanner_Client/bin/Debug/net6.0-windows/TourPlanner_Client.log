@@ -260,3 +260,23 @@
 2023-07-07 17:04:02,464 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
 2023-07-07 17:04:40,663 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
 2023-07-07 17:05:30,021 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-07 22:43:36,847 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-07 22:45:43,254 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-07 22:45:55,517 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
+2023-07-08 14:08:51,141 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-08 14:09:49,102 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-08 14:11:05,628 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-08 14:11:49,187 [1] ERROR TourPlanner_Client.Commands.SubmitTourLogCommand - No date selected.
+2023-07-08 14:12:13,088 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
+2023-07-08 14:12:40,517 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
+2023-07-08 14:13:05,003 [1] INFO TourPlanner_Client.APIs.MapQuestService - Sending MapQuest API request.
+2023-07-08 14:14:48,401 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-09 19:27:24,544 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-09 19:41:50,716 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-09 19:43:02,343 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-09 19:44:41,233 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-09 20:09:26,402 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-09 20:11:34,863 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-09 20:14:31,509 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-09 20:16:28,124 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-09 20:20:07,665 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
