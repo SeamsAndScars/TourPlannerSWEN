@@ -7,6 +7,7 @@ using TourPlanner_Client.Stores;
 using TourPlanner_Client.BL;
 using System;
 using System.Windows.Media;
+using TourPlanner_Client.Search;
 
 namespace TourPlanner_Client.ViewModels
 {
@@ -31,10 +32,7 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        public int Popularity { get; set; }
-        public int ChildFriendliness { get; set; }
-        public string ChildFriendlinessLabel { get; set; }
-
+ 
         public AddTourCommand AddTourCommand { get; }
         public EditTourCommand EditTourCommand { get; }
         public AddTourLogCommand AddTourLogCommand { get; }
@@ -45,6 +43,55 @@ namespace TourPlanner_Client.ViewModels
         public ExportTourCommand ExportTourCommand { get; }
         public ImportTourCommand ImportTourCommand { get; }
 
+
+        private int popularity;
+        public int Popularity
+        {
+            get { return selectedTour?.Popularity ?? popularity; }
+            set
+            {
+                if (selectedTour != null)
+                {
+                    selectedTour.Popularity = value;
+                    OnPropertyChanged(nameof(Popularity));
+                }
+                else
+                {
+                    popularity = value;
+                }
+            }
+        }
+
+        private int childFriendliness;
+        public int ChildFriendliness
+        {
+            get { return childFriendliness; }
+            set
+            {
+                childFriendliness = value;
+                OnPropertyChanged(nameof(ChildFriendliness));
+            }
+        }
+
+        private string childFriendlinessLabel;
+        public string ChildFriendlinessLabel
+        {
+            get { return selectedTour?.ChildFriendlinessLabel ?? childFriendlinessLabel; }
+            set
+            {
+                if (selectedTour != null)
+                {
+                    selectedTour.ChildFriendlinessLabel = value;
+                    OnPropertyChanged(nameof(ChildFriendlinessLabel));
+                }
+                else
+                {
+                    childFriendlinessLabel = value;
+                }
+            }
+        }
+
+
         public List<TourLog> TourLogs
         {
             get { return tourLogs; }
@@ -52,7 +99,6 @@ namespace TourPlanner_Client.ViewModels
             {
                 tourLogs = value;
                 OnPropertyChanged(nameof(TourLogs));
-                CalculateAttributes();
             }
         }
 
@@ -63,8 +109,8 @@ namespace TourPlanner_Client.ViewModels
             {
                 selectedTour = value;
                 LoadTourLogs(selectedTour);
+                CalculateAttributes(selectedTour); // Calculate attributes for the selected tour
                 OnPropertyChanged(nameof(SelectedTour));
-                CalculateAttributes();
             }
         }
 
@@ -132,6 +178,14 @@ namespace TourPlanner_Client.ViewModels
         {
             List<Tour> tourList = tourManager.GetTours();
             Tours = new ObservableCollection<Tour>(tourList);
+
+            // Load tour logs for each tour
+            foreach (var tour in Tours)
+            {
+                LoadTourLogs(tour);
+                CalculateAttributes(tour);
+            }
+
             FilterTours();
         }
 
@@ -161,58 +215,57 @@ namespace TourPlanner_Client.ViewModels
             }
         }
 
-        private void CalculateAttributes()
+        private void CalculateAttributes(Tour tour)
         {
-            if (SelectedTour is not null)
+            if (tour != null)
             {
-                // Calculate popularity based on the number of logs
-                Popularity = TourLogs.Count;
+                // Calculate popularity based on the number of logs specific to the tour
+                tour.Popularity = TourLogs.Count(log => log.TourId == tour.Id);
 
                 // Calculate child-friendliness based on difficulty values, total times, and distance
-                ChildFriendliness = CalculateChildFriendliness();
+                tour.ChildFriendliness = CalculateChildFriendliness(tour);
 
                 // Update the child-friendliness string representation
-                ChildFriendlinessLabel = ChildFriendlinessConverter.ConvertToString(ChildFriendliness); // Assuming ChildFriendliness is an integer
+                tour.ChildFriendlinessLabel = ChildFriendlinessConverter.ConvertToString(tour.ChildFriendliness);
             }
             else
             {
-                Popularity = 0;
-                ChildFriendliness = 0;
-                ChildFriendlinessLabel = string.Empty;
+                // Reset the attributes for the selected tour
+                if (selectedTour != null)
+                {
+                    selectedTour.Popularity = 0;
+                    selectedTour.ChildFriendliness = 0;
+                    selectedTour.ChildFriendlinessLabel = string.Empty;
+                }
             }
-
-            OnPropertyChanged(nameof(Popularity));
-            OnPropertyChanged(nameof(ChildFriendlinessLabel));
         }
 
-        public int CalculateChildFriendliness()
+
+
+
+        public int CalculateChildFriendliness(Tour tour)
         {
             int totalDifficulty = 0;
-            int totalTimeInHours = 0;
-            double totalDistance = 0;
             double averageDifficulty = 0;
 
-            // Calculate the sum of difficulty values and total distance from tour logs
-            foreach (var tourLog in TourLogs)
+            // Calculate the sum of difficulty values from tour logs of the specific tour
+            foreach (var tourLog in TourLogs.Where(log => log.TourId == tour.Id))
             {
                 totalDifficulty += (int)tourLog.Difficulty;
             }
 
-
             // Calculate the average difficulty
-            if (TourLogs.Count > 0)
+            int tourLogsCount = TourLogs.Count(log => log.TourId == tour.Id);
+            if (tourLogsCount > 0)
             {
-                averageDifficulty = totalDifficulty / TourLogs.Count;
+                averageDifficulty = totalDifficulty / tourLogsCount;
             }
 
-            double selectedTourTimeInHours = SelectedTour.Estimate / 3600;
-            double selectedTourDistance = SelectedTour.Distance;
+            double selectedTourTimeInHours = tour.Estimate / 3600;
+            double selectedTourDistance = tour.Distance;
             double childFriendliness = (averageDifficulty * 3 + selectedTourTimeInHours * 2 + selectedTourDistance / 4);
-            
+
             // Calculate the child-friendliness based on the average difficulty, selected tour time, and distance
-            
-
-
             return (int)(childFriendliness);
         }
 
@@ -222,21 +275,23 @@ namespace TourPlanner_Client.ViewModels
             {
                 // Show all tours when the search query is empty
                 Tours = new ObservableCollection<Tour>(tourManager.GetTours());
-                //Searchbox.Background = (ImageBrush)FindResource("watermark");
             }
             else
             {
                 // Filter tours based on the search query
                 Tours = new ObservableCollection<Tour>(
-                    tourManager.GetTours().Where(tour => tour.Name.ToLower().Contains(SearchQuery.ToLower()))
+                    tourManager.GetTours().Where(tour =>
+                        tour.ContainsSearchQuery(SearchQuery) ||
+                        tour.TourLogs.Any(log => log.ContainsSearchQuery(SearchQuery))
+                    )
                 );
             }
         }
 
+
         private void TourManager_TourModified(object sender, EventArgs e)
         {
             LoadTours();
-            CalculateAttributes();
         }
     }
 }

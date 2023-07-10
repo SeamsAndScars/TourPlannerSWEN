@@ -84,6 +84,17 @@ internal class TourRepository
         }
     }
 
+    // delete tourlog
+    public void DeleteTourLog(Guid tourlogId)
+    {
+        var tourlog = GetTourLog(tourlogId);
+        if (tourlog != null)
+        {
+            dbContext.TourLogs.Remove(tourlog);
+            dbContext.SaveChanges();
+        }
+    }
+
     public void AddTourLog(TourLog tourLog)
     {
        dbContext.TourLogs.Add(tourLog);

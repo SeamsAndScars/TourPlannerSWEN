@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TourPlanner_Client.Models
 {
-    public class Tour 
+    public class Tour
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -24,7 +24,12 @@ namespace TourPlanner_Client.Models
 
         [NotMapped]
         public string NewImage { get; set; }
-
+        [NotMapped]
+        public string ChildFriendlinessLabel { get; set; }
+        [NotMapped]
+        public int Popularity { get; set; }
+        [NotMapped]
+        public int ChildFriendliness { get; set; }
         public Tour(string Name, string Description, string Source, string Destination, TransportType ttype)
         {
             Id = Guid.NewGuid();

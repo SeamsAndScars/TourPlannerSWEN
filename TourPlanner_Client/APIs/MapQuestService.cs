@@ -9,6 +9,7 @@ using TourPlanner_Client.DAL;
 using TourPlanner_Client.Models;
 using TourPlanner_Client.ViewModels;
 using System.IO;
+using System.Configuration;
 
 namespace TourPlanner_Client.APIs
 {
@@ -46,7 +47,9 @@ namespace TourPlanner_Client.APIs
                     {
                         byte[] imageData = await response.Content.ReadAsByteArrayAsync();
 
-                        string target = Path.Combine(Directory.GetCurrentDirectory(), "Images");
+                        string relativeImagePath = ConfigurationManager.AppSettings["ImagePath"];
+                        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                        string target = Path.Combine(baseDirectory, relativeImagePath);
                         if (!Directory.Exists(target))
                         {
                             Directory.CreateDirectory(target);

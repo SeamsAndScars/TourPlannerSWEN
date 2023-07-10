@@ -99,15 +99,6 @@ namespace TourPlanner_Client.BL
                 tour.ImageFileName = routeInfo.ImageFileName;
 
                 tourRepository.CreateTour(tour);
-                foreach(TourLog tl in tour.TourLogs)
-                {
-                    if(tl.TourId == tour.Id)
-                        tourRepository.AddTourLog(tl);
-                    else
-                    {
-                        log.Error("TourLog.TourID did not match Tour.ID.");
-                    }
-                }
             }
             else
             {
@@ -232,6 +223,22 @@ namespace TourPlanner_Client.BL
 
             // Delete the tour from the repository
             tourRepository.DeleteTour(existingTour.Id);
+
+            OnTourModified();
+        }
+
+        public void DeleteTourLog(EditTourLogViewModel tourlogViewModel)
+        {
+            TourLog existingTourLog = tourRepository.GetTourLog(tourlogViewModel.Id);
+            if (existingTourLog == null)
+            {
+                log.Error("Could not find Tourlog in Database.");
+                MessageBox.Show("Could not find Tourlog in Database");
+                return;
+            }
+
+            // Delete the tour from the repository
+            tourRepository.DeleteTourLog(existingTourLog.Id);
 
             OnTourModified();
         }

@@ -84,7 +84,7 @@
                     <Bold>
                         <Run FontWeight="Bold">Popularity: </Run>
                     </Bold>
-                    <Run Text="{Binding Popularity}" />
+                    <Run Text="{Binding SelectedTour.Popularity}" />
                 </TextBlock>
             </ListBoxItem>
             <ListBoxItem IsEnabled="False" FontSize="12">
@@ -92,7 +92,7 @@
                         <Bold>
                             <Run FontWeight="Bold">Child-friendliness: </Run>
                         </Bold>
-                        <Run Text="{Binding ChildFriendlinessLabel}" />
+                        <Run Text="{Binding SelectedTour.ChildFriendlinessLabel}" />
                 </TextBlock>
             </ListBoxItem>
         </ListBox>
@@ -142,17 +142,30 @@
                             <DataTemplate>
                                 <StackPanel>
                                     <TextBlock>
-                                        <Run FontWeight="Bold" Text="Date: " />
-                                        <Run Text="{Binding Date, StringFormat={}{0:dd.MM.yyyy}}" />
+                    <Run FontWeight="Bold" Text="Date: " />
+                    <Run Text="{Binding Date, StringFormat={}{0:dd.MM.yyyy}}" />
                                     </TextBlock>
                                     <TextBlock>
-                                        <Run FontWeight="Bold" Text="Comment: " />
-                                        <Run Text="{Binding Comment}" />
+                    <Run FontWeight="Bold" Text="Comment: " />
+                    <Run Text="{Binding Comment}" />
+                                    </TextBlock>
+                                    <TextBlock>
+                    <Run FontWeight="Bold" Text="Difficulty: " />
+                    <Run Text="{Binding Difficulty}" />
+                                    </TextBlock>
+                                    <TextBlock>
+                    <Run FontWeight="Bold" Text="Time: " />
+                    <Run Text="{Binding Time}" />
+                                    </TextBlock>
+                                    <TextBlock>
+                    <Run FontWeight="Bold" Text="Rating: " />
+                    <Run Text="{Binding Rating}" />
                                     </TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+
                 </Grid>
             </TabItem>
         </TabControl>

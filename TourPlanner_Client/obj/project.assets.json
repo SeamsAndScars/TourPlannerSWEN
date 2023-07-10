@@ -640,6 +640,12 @@
           }
         }
       },
+      "NUnit3TestAdapter/4.5.0": {
+        "type": "package",
+        "build": {
+          "build/netcoreapp3.1/NUnit3TestAdapter.props": {}
+        }
+      },
       "Portable.BouncyCastle/1.8.10": {
         "type": "package",
         "compile": {
@@ -2716,6 +2722,33 @@
         "npgsql.entityframeworkcore.postgresql.7.0.4.nupkg.sha512",
         "npgsql.entityframeworkcore.postgresql.nuspec",
         "postgresql.png"
+      ]
+    },
+    "NUnit3TestAdapter/4.5.0": {
+      "sha512": "s8JpqTe9bI2f49Pfr3dFRfoVSuFQyraTj68c3XXjIS/MRGvvkLnrg6RLqnTjdShX+AdFUCCU/4Xex58AdUfs6A==",
+      "type": "package",
+      "path": "nunit3testadapter/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net462/NUnit3.TestAdapter.dll",
+        "build/net462/NUnit3.TestAdapter.pdb",
+        "build/net462/NUnit3TestAdapter.props",
+        "build/net462/nunit.engine.api.dll",
+        "build/net462/nunit.engine.core.dll",
+        "build/net462/nunit.engine.dll",
+        "build/net462/testcentric.engine.metadata.dll",
+        "build/netcoreapp3.1/NUnit3.TestAdapter.dll",
+        "build/netcoreapp3.1/NUnit3.TestAdapter.pdb",
+        "build/netcoreapp3.1/NUnit3TestAdapter.props",
+        "build/netcoreapp3.1/nunit.engine.api.dll",
+        "build/netcoreapp3.1/nunit.engine.core.dll",
+        "build/netcoreapp3.1/nunit.engine.dll",
+        "build/netcoreapp3.1/testcentric.engine.metadata.dll",
+        "docs/README.md",
+        "nunit3testadapter.4.5.0.nupkg.sha512",
+        "nunit3testadapter.nuspec",
+        "nunit_256.png"
       ]
     },
     "Portable.BouncyCastle/1.8.10": {
@@ -5854,6 +5887,7 @@
       "Extended.Wpf.Toolkit >= 4.5.0",
       "Microsoft.EntityFrameworkCore >= 7.0.7",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.7",
+      "NUnit3TestAdapter >= 4.5.0",
       "Newtonsoft.Json >= 13.0.3",
       "Npgsql >= 7.0.4",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.4",
@@ -5865,19 +5899,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\assch\\.nuget\\packages\\": {}
+    "C:\\Users\\Jakob\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\assch\\OneDrive\\Dokumente\\GitHub\\TourPlannerSWEN\\TourPlanner_Client\\TourPlanner_Client.csproj",
+      "projectUniqueName": "C:\\Users\\Jakob\\OneDrive\\Documents\\GitHub\\TourPlannerSWEN\\TourPlanner_Client\\TourPlanner_Client.csproj",
       "projectName": "TourPlanner_Client",
-      "projectPath": "C:\\Users\\assch\\OneDrive\\Dokumente\\GitHub\\TourPlannerSWEN\\TourPlanner_Client\\TourPlanner_Client.csproj",
-      "packagesPath": "C:\\Users\\assch\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\assch\\OneDrive\\Dokumente\\GitHub\\TourPlannerSWEN\\TourPlanner_Client\\obj\\",
+      "projectPath": "C:\\Users\\Jakob\\OneDrive\\Documents\\GitHub\\TourPlannerSWEN\\TourPlanner_Client\\TourPlanner_Client.csproj",
+      "packagesPath": "C:\\Users\\Jakob\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jakob\\OneDrive\\Documents\\GitHub\\TourPlannerSWEN\\TourPlanner_Client\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\assch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jakob\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5885,6 +5924,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5916,6 +5956,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[7.0.7, )"
+          },
+          "NUnit3TestAdapter": {
+            "target": "Package",
+            "version": "[4.5.0, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -5972,13 +6016,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\assch\\OneDrive\\Dokumente\\GitHub\\TourPlannerSWEN\\TourPlanner_Client\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

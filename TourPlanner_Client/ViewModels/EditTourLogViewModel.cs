@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Input;
 using TourPlanner_Client.BL;
 using TourPlanner_Client.Commands;
 using TourPlanner_Client.Models;
@@ -92,6 +93,8 @@ namespace TourPlanner_Client.ViewModels
         }
 
         public SubmitChangeCommand SubmitChangeCommand { get; }
+
+        public ICommand DeleteTourCommand => new DeleteTourLogCommand(this, navigationStore);
 
         public EditTourLogViewModel(NavigationStore navigationStore, TourLog selectedTourLog, TourLog tourLog)
         {

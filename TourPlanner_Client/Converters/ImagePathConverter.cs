@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Windows.Data;
@@ -12,11 +13,12 @@ namespace TourPlanner_Client.Converters
         {
             if (value is string fileName)
             {
-                // Manually specify the base directory
-                string baseDirectory = Directory.GetCurrentDirectory();
+                string relativeImagePath = ConfigurationManager.AppSettings["ImagePath"];
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string target = Path.Combine(baseDirectory, relativeImagePath);
 
                 // Construct the full image path
-                string imagePath = Path.Combine(baseDirectory, "Images", fileName);
+                string imagePath = Path.Combine(target, fileName);
 
                 // Check if the image file exists
                 if (File.Exists(imagePath))
