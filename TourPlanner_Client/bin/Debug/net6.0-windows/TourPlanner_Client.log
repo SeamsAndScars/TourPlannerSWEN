@@ -398,3 +398,5 @@
 2023-07-10 15:38:17,701 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
 2023-07-10 15:41:54,841 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
 2023-07-10 15:47:36,290 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-10 19:17:37,822 [1] INFO TourPlanner_Client.App - TourPlanner client has started!
+2023-07-10 19:22:21,365 [1] WARN TourPlanner_Client.Commands.ExportTourCommand - No File was selected during Export

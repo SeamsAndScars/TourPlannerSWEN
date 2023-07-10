@@ -14,7 +14,6 @@
     <UserControl.Resources>
         <converters:SecondsToTimeConverter x:Key="SecondsToTimeConverter" />
         <converters:ImagePathConverter x:Key="ImagePathConverter" />
-        <ImageBrush x:Key="watermark" ImageSource="Search_test.png" AlignmentX="Left" Stretch="None" />
         <Style TargetType="TabControl">
             <Setter Property="Template">
                 <Setter.Value>

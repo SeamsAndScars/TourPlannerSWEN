@@ -43,6 +43,7 @@ namespace TourPlanner_Client.ViewModels
         public GenerateTourLogReportCommand GenerateTourLogReport { get; }
         public GenerateTourSummaryCommand GenerateTourSummaryCommand { get; }
         public ExportTourCommand ExportTourCommand { get; }
+        public ImportTourCommand ImportTourCommand { get; }
 
         public List<TourLog> TourLogs
         {
@@ -124,6 +125,7 @@ namespace TourPlanner_Client.ViewModels
             GenerateTourLogReport = new GenerateTourLogReportCommand(this, tourManager);
             GenerateTourSummaryCommand = new GenerateTourSummaryCommand(this,tourManager);
             ExportTourCommand = new ExportTourCommand(tourManager);
+            ImportTourCommand = new ImportTourCommand(tourManager);
         }
 
         private void LoadTours()

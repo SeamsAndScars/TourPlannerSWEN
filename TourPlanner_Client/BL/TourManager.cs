@@ -88,6 +88,35 @@ namespace TourPlanner_Client.BL
             OnTourModified();
         }
 
+        public async Task ImportTour(Tour tour)
+        {
+            RouteInfo routeInfo = await mapQuestService.GetRouteInfo(tour.Source, tour.Destination, tour.Ttype);
+            if (routeInfo != null)
+            {
+                // Set the properties of the new tour
+                tour.Distance = routeInfo.Distance;
+                tour.Estimate = routeInfo.Estimate;
+                tour.ImageFileName = routeInfo.ImageFileName;
+
+                tourRepository.CreateTour(tour);
+                foreach(TourLog tl in tour.TourLogs)
+                {
+                    if(tl.TourId == tour.Id)
+                        tourRepository.AddTourLog(tl);
+                    else
+                    {
+                        log.Error("TourLog.TourID did not match Tour.ID.");
+                    }
+                }
+            }
+            else
+            {
+                log.Error("Unexpected Error occured during MapQuest API call while importing tours.");
+                MessageBox.Show("Error during MapQuest API call");
+            }
+            OnTourModified();
+        }
+
         public async Task AddTourLog(Tour selectedtour, AddTourLogViewModel viewModel)
         {
             if(viewModel is null)
