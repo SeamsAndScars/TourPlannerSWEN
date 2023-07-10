@@ -42,6 +42,7 @@ namespace TourPlanner_Client.ViewModels
         private EditTourLogCommand editTourLogCommand;
         public GenerateTourLogReportCommand GenerateTourLogReport { get; }
         public GenerateTourSummaryCommand GenerateTourSummaryCommand { get; }
+        public ExportTourCommand ExportTourCommand { get; }
 
         public List<TourLog> TourLogs
         {
@@ -122,6 +123,7 @@ namespace TourPlanner_Client.ViewModels
             InitializeEditTourLogCommand();
             GenerateTourLogReport = new GenerateTourLogReportCommand(this, tourManager);
             GenerateTourSummaryCommand = new GenerateTourSummaryCommand(this,tourManager);
+            ExportTourCommand = new ExportTourCommand(tourManager);
         }
 
         private void LoadTours()
@@ -159,7 +161,7 @@ namespace TourPlanner_Client.ViewModels
 
         private void CalculateAttributes()
         {
-            if (TourLogs.Count != 0)
+            if (SelectedTour is not null)
             {
                 // Calculate popularity based on the number of logs
                 Popularity = TourLogs.Count;
