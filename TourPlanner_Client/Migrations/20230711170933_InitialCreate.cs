@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
 
 namespace TourPlanner_Client.Migrations
 {
@@ -22,7 +23,8 @@ namespace TourPlanner_Client.Migrations
                     Ttype = table.Column<int>(type: "integer", nullable: false),
                     Distance = table.Column<float>(type: "real", nullable: false),
                     Estimate = table.Column<int>(type: "integer", nullable: false),
-                    ImageFileName = table.Column<string>(type: "text", nullable: false)
+                    ImageFileName = table.Column<string>(type: "text", nullable: false),
+                    IsFavorite = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {

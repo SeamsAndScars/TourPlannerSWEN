@@ -243,6 +243,10 @@ namespace TourPlanner_Client.BL
             OnTourModified();
         }
 
+        public void UpdateTourFavoriteStatus(Tour tour)
+        {
+            tourRepository.UpdateTourFavoriteStatus(tour);
+        }
 
 
         protected virtual void OnTourModified()

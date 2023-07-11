@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 internal class TourRepository
 {
     private readonly TourPlannerDbContext dbContext;
- 
+
     public TourRepository()
     {
         dbContext = new TourPlannerDbContext();
@@ -52,20 +52,20 @@ internal class TourRepository
     // Update a tour (modify)
     public void UpdateTour(Tour tour)
     {
-        
-            dbContext.Tours.Update(tour);
-            dbContext.SaveChanges();
+
+        dbContext.Tours.Update(tour);
+        dbContext.SaveChanges();
     }
 
     // Update a tourlog
 
     public void UpdateTourLog(TourLog tourLog)
     {
-        
+
         try
         {
-        dbContext.TourLogs.Update(tourLog);
-        dbContext.SaveChanges();
+            dbContext.TourLogs.Update(tourLog);
+            dbContext.SaveChanges();
         }
         catch (Exception ex)
         {
@@ -97,7 +97,7 @@ internal class TourRepository
 
     public void AddTourLog(TourLog tourLog)
     {
-       dbContext.TourLogs.Add(tourLog);
+        dbContext.TourLogs.Add(tourLog);
 
         try
         {
@@ -109,6 +109,14 @@ internal class TourRepository
             //  exception message
         }
     }
+    
+    public void UpdateTourFavoriteStatus(Tour tour)
+    {
+        dbContext.Tours.Update(tour);
+        dbContext.SaveChanges();
+    }
+
+    
 
     public List<TourLog> GetTourLogs(Guid tourId)
     {

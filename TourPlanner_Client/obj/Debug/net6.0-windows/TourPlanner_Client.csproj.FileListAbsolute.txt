@@ -297,3 +297,5 @@ C:\Users\Jakob\OneDrive\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\
 C:\Users\Jakob\OneDrive\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\Debug\net6.0-windows\nunit.engine.api.dll
 C:\Users\Jakob\OneDrive\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\Debug\net6.0-windows\nunit.engine.core.dll
 C:\Users\Jakob\OneDrive\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\Debug\net6.0-windows\testcentric.engine.metadata.dll
+C:\Users\Jakob\OneDrive\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\Debug\net6.0-windows\Microsoft.Expression.Interactions.dll
+C:\Users\Jakob\OneDrive\Documents\GitHub\TourPlannerSWEN\TourPlanner_Client\bin\Debug\net6.0-windows\System.Windows.Interactivity.dll

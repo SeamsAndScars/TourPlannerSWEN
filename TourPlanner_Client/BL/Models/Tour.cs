@@ -30,6 +30,7 @@ namespace TourPlanner_Client.Models
         public int Popularity { get; set; }
         [NotMapped]
         public int ChildFriendliness { get; set; }
+        public bool IsFavorite { get; set; }
         public Tour(string Name, string Description, string Source, string Destination, TransportType ttype)
         {
             Id = Guid.NewGuid();

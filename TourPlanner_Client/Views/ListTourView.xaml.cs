@@ -16,6 +16,7 @@
     using TourPlanner_Client.ViewModels;
     using TourPlanner_Client.Commands;
     using TourPlanner_Client.Stores;
+using System.Windows.Controls.Primitives;
 
     namespace TourPlanner_Client.Views
     {
@@ -27,9 +28,11 @@
             private NavigationStore navigationStore = new NavigationStore();
             // private INavigationStore navigationStore;
 
+            
             public ListTourView()
             {
                 InitializeComponent();
+
             }
             
             private void ListBoxItem_DoubleClick(object sender, MouseButtonEventArgs e)
@@ -49,5 +52,6 @@
 
             }
 
-        }
+
+    }
     }

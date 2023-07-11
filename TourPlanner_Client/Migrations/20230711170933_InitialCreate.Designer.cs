@@ -12,7 +12,7 @@ using TourPlanner_Client.DAL.Database;
 namespace TourPlanner_Client.Migrations
 {
     [DbContext(typeof(TourPlannerDbContext))]
-    [Migration("20230707143812_InitialCreate")]
+    [Migration("20230711170933_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -48,6 +48,9 @@ namespace TourPlanner_Client.Migrations
                     b.Property<string>("ImageFileName")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<bool>("IsFavorite")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Name")
                         .IsRequired()

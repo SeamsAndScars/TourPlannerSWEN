@@ -21,16 +21,7 @@ namespace TourPlanner_Client.ViewModels
         private TourLog selectedTourLog;
         private string searchQuery;
 
-        public string SearchQuery
-        {
-            get { return searchQuery; }
-            set
-            {
-                searchQuery = value;
-                FilterTours();
-                OnPropertyChanged(nameof(SearchQuery));
-            }
-        }
+        
 
  
         public AddTourCommand AddTourCommand { get; }
@@ -42,7 +33,18 @@ namespace TourPlanner_Client.ViewModels
         public GenerateTourSummaryCommand GenerateTourSummaryCommand { get; }
         public ExportTourCommand ExportTourCommand { get; }
         public ImportTourCommand ImportTourCommand { get; }
+        public RelayCommand<Tour> ToggleFavoriteCommand { get; }
 
+        public string SearchQuery
+        {
+            get { return searchQuery; }
+            set
+            {
+                searchQuery = value;
+                FilterTours();
+                OnPropertyChanged(nameof(SearchQuery));
+            }
+        }
 
         private int popularity;
         public int Popularity
@@ -161,7 +163,7 @@ namespace TourPlanner_Client.ViewModels
 
             tourManager = TourManager.Instance;
             tourManager.TourModified += TourManager_TourModified;
-            LoadTours();
+            
 
             AddTourCommand = new AddTourCommand(navigationStore);
             EditTourCommand = new EditTourCommand(navigationStore);
@@ -172,7 +174,40 @@ namespace TourPlanner_Client.ViewModels
             GenerateTourSummaryCommand = new GenerateTourSummaryCommand(this,tourManager);
             ExportTourCommand = new ExportTourCommand(tourManager);
             ImportTourCommand = new ImportTourCommand(tourManager);
+            ToggleFavoriteCommand = new RelayCommand<Tour>(ToggleFavorite);
+
+            LoadTours();
         }
+
+        private void ToggleFavorite(Tour tour)
+        {
+            if (tour != null)
+            {
+                // Update the favorite status in the tours list
+                var index = Tours.IndexOf(tour);
+                if (index != -1)
+                {
+                    Tours[index].IsFavorite = tour.IsFavorite;
+
+                    // If the tour is now a favorite, move it to the top of the list
+                    if (tour.IsFavorite)
+                    {
+                        Tours.Remove(tour);
+                        Tours.Insert(0, tour);
+                    }
+                    else
+                    {
+                        // If the tour is no longer a favorite, move it to the end of the list
+                        Tours.Remove(tour);
+                        Tours.Add(tour);
+                    }
+                }
+
+                // Update the favorite status in the database
+                tourManager.UpdateTourFavoriteStatus(tour);
+            }
+        }
+
 
         private void LoadTours()
         {
@@ -287,6 +322,7 @@ namespace TourPlanner_Client.ViewModels
                 );
             }
         }
+
 
 
         private void TourManager_TourModified(object sender, EventArgs e)

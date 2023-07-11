@@ -14,6 +14,7 @@
     <UserControl.Resources>
         <converters:SecondsToTimeConverter x:Key="SecondsToTimeConverter" />
         <converters:ImagePathConverter x:Key="ImagePathConverter" />
+        <converters:StarColorConverter x:Key="StarColorConverter" />
         <Style TargetType="TabControl">
             <Setter Property="Template">
                 <Setter.Value>
@@ -182,13 +183,52 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+
+                        <!-- Favorite button -->
+                        <ToggleButton Grid.Column="0"
+                          IsChecked="{Binding IsFavorite}"
+                          Command="{Binding DataContext.ToggleFavoriteCommand,
+                                            RelativeSource={RelativeSource AncestorType={x:Type ListBox}},
+                                            Mode=OneWay}"
+                          CommandParameter="{Binding}">
+                            <ToggleButton.Resources>
+                                <Style TargetType="ToggleButton">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ToggleButton">
+                                                <Grid Background="Transparent">
+                                                    <Path Data="M12,2 L15.09,8.39 L22,9 L17,13.42 L18.18,20 L12,16.8 L5.82,20 L7,13.42 L2,9 L8.91,8.39 Z"
+                                              Fill="{Binding IsFavorite, Converter={StaticResource StarColorConverter}}"
+                                              Margin="2"
+                                              Width="20"
+                                              Height="20"
+                                              Stretch="Uniform"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RenderTransformOrigin="0.5,0.5">
+                                                        <Path.RenderTransform>
+                                                            <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                                                        </Path.RenderTransform>
+                                                    </Path>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ToggleButton.Resources>
+                        </ToggleButton>
+
+                        <!-- TextBlock for displaying the name -->
+                        <TextBlock Grid.Column="1" Text="{Binding Name}" />
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+
+
+
         </ListBox>
         
        
@@ -260,6 +300,8 @@
         <!-- Searchbar -->
         <xctk:WatermarkTextBox Grid.Row ="7" Watermark="Search" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" Width="Auto" BorderThickness="0" Background="#F1F1F1" Foreground="#333333" Padding="8,4,8,4" FontSize="12" FontFamily="Segoe UI" VerticalAlignment="Center" Height="30"/>
 
+       
+        
     </Grid>
 
 </UserControl>
