@@ -17,7 +17,7 @@ namespace TourPlanner_Client
             base.OnStartup(e);
 
             // Create the NavigationStore
-            var navigationStore = new NavigationStore();
+            var navigationStore = NavigationStore.Instance;
 
             // Create the MainViewModel and pass the NavigationStore
             var mainViewModel = new MainViewModel(navigationStore);

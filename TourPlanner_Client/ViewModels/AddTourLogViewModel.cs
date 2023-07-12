@@ -30,7 +30,7 @@ namespace TourPlanner_Client.ViewModels
 
         public List<Difficulty> DifficultyTypes { get; } = Enum.GetValues(typeof(Difficulty)).Cast<Difficulty>().ToList();
         public List<Rating> RatingTypes { get; } = Enum.GetValues(typeof(Rating)).Cast<Rating>().ToList();
-        public CancelTourCommand CancelTourCommand { get; }
+       // public CancelTourCommand CancelTourCommand { get; }
         public SubmitTourLogCommand SubmitTourLogCommand { get; }
 
         private ValidateTotalTime validateTotalTime;
@@ -121,7 +121,7 @@ namespace TourPlanner_Client.ViewModels
         {
             this.navigationStore = navigationStore;
             tour = selectedTour;
-            CancelTourCommand = new CancelTourCommand(navigationStore);
+            //CancelTourCommand = new CancelTourCommand(navigationStore);
             SubmitTourLogCommand = new SubmitTourLogCommand(navigationStore, this, tour);
             validateTotalTime = new ValidateTotalTime();
             //MessageBox.Show("Comment:" + Comment + "\nDifficulty:" + _selectedDifficulty.ToString() + "\nSelected Date:" + SelectedDate.ToString() + "\nType of Date:" + SelectedDate.GetType().ToString());

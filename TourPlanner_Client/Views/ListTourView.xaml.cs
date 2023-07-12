@@ -25,9 +25,7 @@ using System.Windows.Controls.Primitives;
         /// </summary>
         public partial class ListTourView : UserControl
         {
-            private NavigationStore navigationStore = new NavigationStore();
-            // private INavigationStore navigationStore;
-
+            private NavigationStore navigationStore = NavigationStore.Instance;
             
             public ListTourView()
             {

@@ -13,6 +13,9 @@
     <Compile Update="Views\AddTourView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\CancelButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\EditTourLogView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AddTourView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CancelButton.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\EditTourLogView.xaml">

@@ -30,25 +30,26 @@
 
 
 
-        <TextBox Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Name}" TextAlignment="Center"  Height="25" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Name}" TextAlignment="Center"  Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <TextBlock Grid.Row="1" Grid.Column="1" Text="Name" TextAlignment="Center" VerticalAlignment="Center"/>
 
-        <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" TextWrapping="Wrap" Text="{Binding Description}" TextAlignment="Center"  Height="25" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" TextWrapping="Wrap" Text="{Binding Description}" TextAlignment="Center"  Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <TextBlock Grid.Row="2" Grid.Column="1" Text="Description" TextAlignment="Center" VerticalAlignment="Center"/>
 
-        <TextBox Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Source}" TextAlignment="Center"  Height="25" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Source}" TextAlignment="Center"  Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <TextBlock Grid.Row="3" Grid.Column="1" Text="From:" TextAlignment="Center" VerticalAlignment="Center"/>
 
-        <TextBox Grid.Row="3" Grid.Column="5" TextWrapping="Wrap" Text="{Binding Destination}" TextAlignment="Center"  Height="25" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="3" Grid.Column="5" TextWrapping="Wrap" Text="{Binding Destination}" TextAlignment="Center"  Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <TextBlock Grid.Row="3" Grid.Column="4" Text="To:" TextAlignment="Center" VerticalAlignment="Center"/>
 
 
-        <TextBlock Grid.Row="4" Grid.Column="1" Text="Transport type:" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="Transport type:" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <ComboBox Grid.Row="4" Grid.Column="2" Height="25" ItemsSource="{Binding TransportTypes}" SelectedItem="{Binding SelectedTransportType}" />
 
-        <Button Content="Cancel" Grid.Column="1"  Grid.Row="6" Height="25" MaxWidth="80" Command="{Binding CancelTourCommand}"/>
+        <!--Button Content="Cancel" Grid.Column="1"  Grid.Row="6" Height="25" MaxWidth="80" Command="{Binding CancelTourCommand}"/-->
+        <local:CancelButton Grid.Column="1" Grid.Row="6" />
         <Button Content="Submit" Grid.Column="3" Grid.Row="6" Height="25" MaxWidth="120" Command="{Binding SubmitChangeCommand}"/>
-        <Button Content="Delete" Grid.Column="5" Grid.Row="6" Height="25" MaxWidth="80" Command="{Binding DeleteTourCommand}"/>
+        <Button Content="Delete" Grid.Column="5" Grid.Row="6" Height="25" MaxWidth="120" Command="{Binding DeleteTourCommand}"/>
 
 
 

@@ -99,7 +99,7 @@
         </ListBox>
 
         <!-- Tabs -->
-        <TabControl Grid.Column="1" Grid.RowSpan="4">
+        <TabControl Grid.Column="1" Grid.RowSpan="3">
             <TabItem Header="Image">
                 <Image Grid.Column="1" Grid.RowSpan="3" Height="Auto" Width="Auto" Source="{Binding SelectedTour.ImageFileName, Converter={StaticResource ImagePathConverter}}" />
             </TabItem>
